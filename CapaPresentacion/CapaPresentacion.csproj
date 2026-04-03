@@ -2843,6 +2843,9 @@
     <Content Include="assets\vendor\vanilla-wizard\js\wizard.min.js" />
     <Content Include="assets\vendor\wnumb\wNumb.min.js" />
     <Content Include="Inicio.aspx" />
+    <Content Include="js\Masterpa.js" />
+    <Content Include="js\PropiedadesPage.js" />
+    <Content Include="PropiedadesPage.aspx" />
     <Content Include="UbicacionPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -2856,11 +2859,19 @@
     </Compile>
     <Compile Include="MasterHome.Master.cs">
       <DependentUpon>MasterHome.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterHome.Master.designer.cs">
       <DependentUpon>MasterHome.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropiedadesPage.aspx.cs">
+      <DependentUpon>PropiedadesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PropiedadesPage.aspx.designer.cs">
+      <DependentUpon>PropiedadesPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UbicacionPage.aspx.cs">
       <DependentUpon>UbicacionPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2931,6 +2942,7 @@
     <Content Include="assets\vendor\gmaps\umd.hbs" />
     <Content Include="assets\vendor\gmaps\yarn-error.log" />
     <Content Include="assets\vendor\wnumb\LICENSE.MD" />
+    <Content Include="DocumetPdf\sinPdf.pdf" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
