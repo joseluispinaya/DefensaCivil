@@ -163,6 +163,19 @@
                             </li>
 
                             <li class="nav-item dropdown hover-dropdown">
+                                <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-usuarios" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="menu-icon"><i class="ti ti-user-circle"></i></span>
+                                    <span class="menu-text">Usuarios</span>
+                                    <div class="menu-arrow"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-usuarios">
+                                    <a href="UsuariosPage.aspx" class="dropdown-item">Registros</a>
+                                    <a href="#" class="dropdown-item">Control Acceso</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown hover-dropdown">
                                 <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-charts" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="menu-icon"><i class="ti ti-home"></i></span>
                                     <span class="menu-text">Propiedades</span>
@@ -170,7 +183,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-charts">
                                     <a href="PropiedadesPage.aspx" class="dropdown-item">Registros</a>
-                                    <a href="#" class="dropdown-item">Consultas</a>
+                                    <a href="ConsultasPage.aspx" class="dropdown-item">Consultas</a>
                                     <a href="#" class="dropdown-item">Sugerencias</a>
                                 </div>
                             </li>

@@ -209,7 +209,7 @@
 
                                 <div class="d-flex wizard justify-content-between flex-wrap gap-2 mt-3">
                                     <div class="first">
-                                        <a href="javascript:void(0);" class="btn btn-primary">First
+                                        <a href="javascript:void(0);" class="btn btn-primary">Primer
                                         </a>
                                     </div>
                                     <div class="d-flex flex-wrap gap-2">
@@ -219,12 +219,12 @@
                                             </a>
                                         </div>
                                         <div class="next">
-                                            <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">Next Step<i class="bx bx-right-arrow-alt ms-2"></i>
+                                            <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">Siguiente<i class="bx bx-right-arrow-alt ms-2"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="last">
-                                        <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">Finish
+                                        <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">Final
                                         </a>
                                     </div>
                                 </div>

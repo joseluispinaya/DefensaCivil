@@ -52,7 +52,7 @@ function updateInputs(lat, lng) {
     document.getElementById("txtLongitud").value = lng.toFixed(6);
 }
 
-const TAMANO_MAXIMO = 4 * 1024 * 1024; // 4 MB en bytes
+const TAMANO_MAXIMO = 8 * 1024 * 1024; // 4 MB en bytes
 
 function mostrarPdfSeleccionada(input) {
     let file = input.files[0];
@@ -77,7 +77,7 @@ function mostrarPdfSeleccionada(input) {
     if (file.size > TAMANO_MAXIMO) {
         ToastMaster.fire({
             icon: 'error',
-            title: 'El archivo supera el tamaño máximo permitido de 4 MB.'
+            title: 'El archivo supera el tamaño máximo permitido de 8 MB.'
         });
         resetearVistaPdf(input);
         return;

@@ -2842,14 +2842,25 @@
     <Content Include="assets\vendor\toastr\toastr.min.js" />
     <Content Include="assets\vendor\vanilla-wizard\js\wizard.min.js" />
     <Content Include="assets\vendor\wnumb\wNumb.min.js" />
+    <Content Include="ConsultasPage.aspx" />
+    <Content Include="Imagenes\sinimagen.png" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\Masterpa.js" />
     <Content Include="js\PropiedadesPage.js" />
+    <Content Include="js\UsuariosPage.js" />
     <Content Include="PropiedadesPage.aspx" />
     <Content Include="UbicacionPage.aspx" />
+    <Content Include="UsuariosPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultasPage.aspx.cs">
+      <DependentUpon>ConsultasPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultasPage.aspx.designer.cs">
+      <DependentUpon>ConsultasPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2878,6 +2889,13 @@
     </Compile>
     <Compile Include="UbicacionPage.aspx.designer.cs">
       <DependentUpon>UbicacionPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuariosPage.aspx.cs">
+      <DependentUpon>UsuariosPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuariosPage.aspx.designer.cs">
+      <DependentUpon>UsuariosPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
