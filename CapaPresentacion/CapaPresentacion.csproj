@@ -466,6 +466,7 @@
     <Content Include="assets\images\users\avatar-7.jpg" />
     <Content Include="assets\images\users\avatar-8.jpg" />
     <Content Include="assets\images\users\avatar-9.jpg" />
+    <Content Include="assets\images\videcilogo-2.png" />
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\config.js" />
     <Content Include="assets\js\maps\canada.js" />
@@ -2843,11 +2844,14 @@
     <Content Include="assets\vendor\vanilla-wizard\js\wizard.min.js" />
     <Content Include="assets\vendor\wnumb\wNumb.min.js" />
     <Content Include="ConsultasPage.aspx" />
+    <Content Include="Imagenes\fotop4.jpg" />
     <Content Include="Imagenes\sinimagen.png" />
     <Content Include="Inicio.aspx" />
+    <Content Include="js\Login.js" />
     <Content Include="js\Masterpa.js" />
     <Content Include="js\PropiedadesPage.js" />
     <Content Include="js\UsuariosPage.js" />
+    <Content Include="Login.aspx" />
     <Content Include="PropiedadesPage.aspx" />
     <Content Include="UbicacionPage.aspx" />
     <Content Include="UsuariosPage.aspx" />
@@ -2867,6 +2871,13 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterHome.Master.cs">
       <DependentUpon>MasterHome.Master</DependentUpon>
@@ -2998,6 +3009,16 @@
     <Folder Include="assets\vendor\rater-js\example\" />
     <Folder Include="assets\vendor\rater-js\test\" />
     <Folder Include="assets\vendor\swiper\types\modules\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
+      <Project>{e78de530-1254-4498-9a51-f774de14fb9f}</Project>
+      <Name>CapaEntidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{cb9555cd-726c-4647-8d28-ccd42fb883c1}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
