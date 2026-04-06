@@ -2845,6 +2845,7 @@
     <Content Include="assets\vendor\wnumb\wNumb.min.js" />
     <Content Include="ConsultasPage.aspx" />
     <Content Include="Imagenes\fotop4.jpg" />
+    <Content Include="Imagenes\iconlo.png" />
     <Content Include="Imagenes\sinimagen.png" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\Login.js" />
@@ -2852,6 +2853,13 @@
     <Content Include="js\PropiedadesPage.js" />
     <Content Include="js\UsuariosPage.js" />
     <Content Include="Login.aspx" />
+    <Content Include="MasterAdmin\AjustesPage.aspx" />
+    <Content Include="MasterAdmin\InicioAdmin.aspx" />
+    <Content Include="MasterAdmin\jsAdm\MasterAdmin.js" />
+    <Content Include="MasterAdmin\jsAdm\UbicacionesPage.js" />
+    <Content Include="MasterAdmin\RegionalesPage.aspx" />
+    <Content Include="MasterAdmin\UbicacionesPage.aspx" />
+    <Content Include="MasterAdmin\UsuariosReg.aspx" />
     <Content Include="PropiedadesPage.aspx" />
     <Content Include="UbicacionPage.aspx" />
     <Content Include="UsuariosPage.aspx" />
@@ -2878,6 +2886,48 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterAdmin\AjustesPage.aspx.cs">
+      <DependentUpon>AjustesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterAdmin\AjustesPage.aspx.designer.cs">
+      <DependentUpon>AjustesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterAdmin\InicioAdmin.aspx.cs">
+      <DependentUpon>InicioAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterAdmin\InicioAdmin.aspx.designer.cs">
+      <DependentUpon>InicioAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterAdmin\MasterAdminHo.Master.cs">
+      <DependentUpon>MasterAdminHo.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterAdmin\MasterAdminHo.Master.designer.cs">
+      <DependentUpon>MasterAdminHo.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterAdmin\RegionalesPage.aspx.cs">
+      <DependentUpon>RegionalesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterAdmin\RegionalesPage.aspx.designer.cs">
+      <DependentUpon>RegionalesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterAdmin\UbicacionesPage.aspx.cs">
+      <DependentUpon>UbicacionesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterAdmin\UbicacionesPage.aspx.designer.cs">
+      <DependentUpon>UbicacionesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterAdmin\UsuariosReg.aspx.cs">
+      <DependentUpon>UsuariosReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterAdmin\UsuariosReg.aspx.designer.cs">
+      <DependentUpon>UsuariosReg.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterHome.Master.cs">
       <DependentUpon>MasterHome.Master</DependentUpon>
@@ -2972,6 +3022,7 @@
     <Content Include="assets\vendor\gmaps\yarn-error.log" />
     <Content Include="assets\vendor\wnumb\LICENSE.MD" />
     <Content Include="DocumetPdf\sinPdf.pdf" />
+    <Content Include="MasterAdmin\MasterAdminHo.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
