@@ -57,7 +57,7 @@
                                 <div class="tab-pane fade active show" id="v-pills-home2" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <%--<p class="mb-2">Welcome atmosphere with our selection of home decor</p>--%>
 
-                                    <div class="mb-2">
+                                    <div class="mb-3">
                                         <div class="d-flex justify-content-center">
                                             <button type="button" id="btnNuevoDep" class="btn btn-sm btn-info"><i class="ti ti-plus me-1 fs-20"></i>Registrar</button>
                                         </div>
@@ -78,7 +78,9 @@
                                     <table class="table table-striped table-sm" id="tbDeparta" cellspacing="0" style="width: 100%">
                                         <thead>
                                             <tr>
+                                                <th>Id</th>
                                                 <th>Departamentos</th>
+                                                <th>Nro Prov</th>
                                                 <th>Opciones</th>
                                             </tr>
                                         </thead>
@@ -94,7 +96,6 @@
                                                 <i class="ti ti-map-2 me-1"></i>Departamento
                                             </span>
                                             <select class="form-select" id="cboDepartamento" aria-describedby="addon-departa">
-                                                <option value="0" selected disabled>Seleccione un departamento...</option>
                                             </select>
                                         </div>
 
@@ -104,13 +105,13 @@
 
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-sm table-hover align-middle" id="tbProvin" cellspacing="0" style="width: 100%">
-                                            <thead class="table-light">
+                                        <table class="table table-striped table-sm" id="tbProvin" cellspacing="0" style="width: 100%">
+                                            <thead>
                                                 <tr>
-                                                    <th style="width: 10%;">Id</th>
-                                                    <th style="width: 40%;">Provincias</th>
-                                                    <th style="width: 30%;">Nro Municipios</th>
-                                                    <th style="width: 20%;" class="text-center">Opciones</th>
+                                                    <th>Id</th>
+                                                    <th>Provincias</th>
+                                                    <th>Nro Muns</th>
+                                                    <th>Opciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
