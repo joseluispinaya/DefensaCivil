@@ -25,6 +25,7 @@
                                 <th>Municipio</th>
                                 <th>Responsable</th>
                                 <th>Contacto</th>
+                                <th>Fecha</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>

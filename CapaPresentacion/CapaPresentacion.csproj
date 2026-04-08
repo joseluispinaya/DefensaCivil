@@ -2858,6 +2858,7 @@
     <Content Include="MasterAdmin\jsAdm\MasterAdmin.js" />
     <Content Include="MasterAdmin\jsAdm\RegionalesPage.js" />
     <Content Include="MasterAdmin\jsAdm\UbicacionesPage.js" />
+    <Content Include="MasterAdmin\jsAdm\UsuariosPage.js" />
     <Content Include="MasterAdmin\RegionalesPage.aspx" />
     <Content Include="MasterAdmin\UbicacionesPage.aspx" />
     <Content Include="MasterAdmin\UsuariosReg.aspx" />
