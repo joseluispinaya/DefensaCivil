@@ -29,5 +29,23 @@ namespace CapaPresentacion.MasterAdmin
         {
             return NUbicaciones.GetInstance().ListaProvincias(IdDepartamento);
         }
+
+        [WebMethod]
+        public static Respuesta<List<EMunicipio>> ListaMunicipios(int IdProvincia)
+        {
+            return NUbicaciones.GetInstance().ListaMunicipios(IdProvincia);
+        }
+
+        [WebMethod]
+        public static Respuesta<int> GuardarOrEditMunicipio(EMunicipio objeto)
+        {
+            return NUbicaciones.GetInstance().GuardarOrEditMunicipio(objeto);
+        }
+
+        [WebMethod]
+        public static Respuesta<int> GuardarOrEditProvincia(EProvincia objeto)
+        {
+            return NUbicaciones.GetInstance().GuardarOrEditProvincia(objeto);
+        }
     }
 }

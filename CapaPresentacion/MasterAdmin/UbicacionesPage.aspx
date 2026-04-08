@@ -55,25 +55,13 @@
                         <div class="col-sm-9">
                             <div class="tab-content" id="v-pills-tabContent-right">
                                 <div class="tab-pane fade active show" id="v-pills-home2" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                    <%--<p class="mb-2">Welcome atmosphere with our selection of home decor</p>--%>
 
                                     <div class="mb-3">
                                         <div class="d-flex justify-content-center">
                                             <button type="button" id="btnNuevoDep" class="btn btn-sm btn-info"><i class="ti ti-plus me-1 fs-20"></i>Registrar</button>
+                                            <%--<button type="button" id="btnPruebaSwal" class="btn btn-sm btn-primary"><i class="ti ti-device-floppy fs-16 align-middle me-1"></i>Alertas</button>--%>
                                         </div>
                                     </div>
-
-                                    <%--<div class="d-flex justify-content-center">
-                                        <div class="input-group input-group-sm mb-3">
-                                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                                            <select class="form-select" id="inputGroupSelect01">
-                                                <option selected>Choose...</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>--%>
 
                                     <table class="table table-striped table-sm" id="tbDeparta" cellspacing="0" style="width: 100%">
                                         <thead>
@@ -120,25 +108,18 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                    <%--<div class="mb-2">
-                                        <div class="d-flex justify-content-center">
-                                            <button type="button" id="btnNuevoMunic" class="btn btn-sm btn-info"><i class="ti ti-plus me-1 fs-20"></i>Registrar</button>
-                                        </div>
-                                    </div>--%>
 
                                     <div class="row gy-2 gx-2 align-items-end mb-3">
 
                                         <div class="col-auto">
                                             <label for="cboDepartamentoMun" class="form-label mb-1 text-muted fw-semibold">Depto.</label>
                                             <select class="form-select form-select-sm" id="cboDepartamentoMun" style="min-width: 200px;">
-                                                <option value="0" selected disabled>Seleccione dep...</option>
                                             </select>
                                         </div>
 
                                         <div class="col-auto">
                                             <label for="cboProvincia" class="form-label mb-1 text-muted fw-semibold">Prov.</label>
                                             <select class="form-select form-select-sm" id="cboProvincia" style="min-width: 220px;" disabled>
-                                                <option value="0" selected disabled>Elija un depto. primero...</option>
                                             </select>
                                         </div>
 
@@ -150,12 +131,12 @@
 
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-sm table-hover align-middle" id="tbMunici" cellspacing="0" style="width: 100%">
-                                            <thead class="table-light">
+                                        <table class="table table-striped table-sm" id="tbMunici" cellspacing="0" style="width: 100%">
+                                            <thead>
                                                 <tr>
-                                                    <th style="width: 10%;">Id</th>
-                                                    <th style="width: 70%;">Municipios</th>
-                                                    <th style="width: 20%;" class="text-center">Opciones</th>
+                                                    <th>Id</th>
+                                                    <th>Municipios</th>
+                                                    <th>Opciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -251,7 +232,7 @@
                     </div>
                     <div class="mb-1">
                         <label for="cboProviModalmuni" class="form-label mb-1 text-muted fw-semibold">Selecione Provincia</label>
-                        <select class="form-select form-select-sm" id="cboProviModalmuni">
+                        <select class="form-select form-select-sm" id="cboProviModalmuni" disabled>
                         </select>
                     </div>
                     <div class="mb-1">

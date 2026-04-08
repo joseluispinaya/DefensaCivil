@@ -25,5 +25,26 @@ function mostrarAlerta(titulo, mensaje, icono, claseBoton = "btn btn-primary") {
     });
 }
 
+function mostrarAlertaZero(titulo, mensaje, icono) {
+
+    let btnClass = 'btn-primary';
+
+    // Asignamos el color del botón según el estilo de Color Admin
+    if (icono === 'success') btnClass = 'btn-success';
+    else if (icono === 'warning') btnClass = 'btn-warning';
+    else if (icono === 'error') btnClass = 'btn-danger';
+    else if (icono === 'info') btnClass = 'btn-info';
+
+    Swal.fire({
+        title: titulo,
+        text: mensaje,
+        icon: icono,
+        confirmButtonText: "Ok",
+        buttonsStyling: false, // Esto es importante en tu plantilla para usar los botones de Bootstrap
+        customClass: {
+            confirmButton: 'btn ' + btnClass
+        }
+    });
+}
 
 // fin

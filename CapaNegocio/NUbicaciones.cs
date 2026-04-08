@@ -32,5 +32,20 @@ namespace CapaNegocio
         {
             return DUbicaciones.GetInstance().ListaProvincias(IdDepartamento);
         }
+
+        public Respuesta<List<EMunicipio>> ListaMunicipios(int IdProvincia)
+        {
+            return DUbicaciones.GetInstance().ListaMunicipios(IdProvincia);
+        }
+
+        public Respuesta<int> GuardarOrEditMunicipio(EMunicipio objeto)
+        {
+            return DUbicaciones.GetInstance().GuardarOrEditMunicipio(objeto);
+        }
+
+        public Respuesta<int> GuardarOrEditProvincia(EProvincia objeto)
+        {
+            return DUbicaciones.GetInstance().GuardarOrEditProvincia(objeto);
+        }
     }
 }
