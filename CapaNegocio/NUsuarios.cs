@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CapaDatos;
 using CapaEntidad.Entidades;
 using CapaEntidad.Responses;
+using CapaEntidad.DTOs;
 
 namespace CapaNegocio
 {
@@ -24,9 +25,38 @@ namespace CapaNegocio
         }
         #endregion
 
+        public Respuesta<int> GuardarOrEditUsuarios(UsuarioDTO objeto)
+        {
+            return DUsuario.GetInstance().GuardarOrEditUsuarios(objeto);
+        }
+
+
+        public Respuesta<List<UsuarioDTO>> ListaUsuariosIdRegional(int IdRegional)
+        {
+            return DUsuario.GetInstance().ListaUsuariosIdRegional(IdRegional);
+        }
+
+        // original
+        public Respuesta<UsuarioLogDTO> LogeoUsuario(string Correo)
+        {
+            return DUsuario.GetInstance().LoginUsuario(Correo);
+        }
+
+        public void RegistrarAcceso(int idUsuario)
+        {
+            // Si en el futuro necesitas validar algo (ej. "solo registrar accesos de ciertos roles"),
+            // la lógica iría aquí. Por ahora, solo pasamos la orden a la Capa de Datos.
+            DUsuario.GetInstance().RegistrarAcceso(idUsuario);
+        }
+
+        public Respuesta<List<ERol>> ListaRoles()
+        {
+            return DUsuario.GetInstance().ListaRoles();
+        }
+
         public Respuesta<EUsuarios> LoginUsuario(string Correo)
         {
-            var correoPrueba = "joseluis@yopmail.com";
+            var correoPrueba = "joseluisdev@yopmail.com";
 
             if (correoPrueba.ToLower() != Correo.Trim().ToLower())
             {
@@ -45,7 +75,7 @@ namespace CapaNegocio
                 Nombres = "Jose Dev",
                 Apellidos = "Pinaya Seo",
                 NroCi = "32547854",
-                Correo = "joseluis@yopmail.com",
+                Correo = "joseluisdev@yopmail.com",
                 Celular = "73999748",
                 ClaveHash = "123456789",
                 ImagenUser = "/Imagenes/fotop4.jpg",

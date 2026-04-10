@@ -12,6 +12,41 @@ const ToastMaster = Swal.mixin({
     }
 });
 
+function mostrarAlerta(titulo, mensaje, icono, claseBoton = "btn btn-primary") {
+    Swal.fire({
+        title: titulo,
+        text: mensaje,
+        icon: icono,
+        confirmButtonText: "Ok",
+        buttonsStyling: false, // Esto es importante en tu plantilla para usar los botones de Bootstrap
+        customClass: {
+            confirmButton: claseBoton
+        }
+    });
+}
+
+function mostrarAlertaZero(titulo, mensaje, icono) {
+
+    let btnClass = 'btn-primary';
+
+    // Asignamos el color del botón según el estilo de Color Admin
+    if (icono === 'success') btnClass = 'btn-success';
+    else if (icono === 'warning') btnClass = 'btn-warning';
+    else if (icono === 'error') btnClass = 'btn-danger';
+    else if (icono === 'info') btnClass = 'btn-info';
+
+    Swal.fire({
+        title: titulo,
+        text: mensaje,
+        icon: icono,
+        confirmButtonText: "Ok",
+        buttonsStyling: false, // Esto es importante en tu plantilla para usar los botones de Bootstrap
+        customClass: {
+            confirmButton: 'btn ' + btnClass
+        }
+    });
+}
+
 $(document).ready(function () {
 
     const usuarioLog = sessionStorage.getItem('usuaLog');
@@ -25,14 +60,14 @@ $(document).ready(function () {
         const usua = JSON.parse(usuarioLog);
         // mostrar la imagen y nombre del usuairo 
 
-        $("#imgAdmins").attr("src", usua.ImagenUser || "Imagenes/sinimagen.png");
+        $("#imgAdmins").attr("src", usua.FotoUrl || "Imagenes/sinimagen.png");
         $("#txtApellidosAdm").text(usua.Apellidos);
 
         // Iniciar el temporizador de inactividad
-        iniciarTemporizadorInactividad();
+        //iniciarTemporizadorInactividad();
 
         // Detectar actividad del usuario para reiniciar el temporizador
-        $(document).on('mousemove keypress click scroll', reiniciarTemporizadorInactividad);
+        //$(document).on('mousemove keypress click scroll', reiniciarTemporizadorInactividad);
 
     } catch (error) {
         console.error("Error leyendo sesión", error);
@@ -63,9 +98,38 @@ $('#salirsis').on('click', function (e) {
 });
 
 function EjecutarCierreSesion() {
-    sessionStorage.clear();
-    window.location.replace('Login.aspx');
+    $.ajax({
+        // Asegúrate que la ruta apunte a donde pusiste el WebMethod
+        // Si estás en MasterEstudiante/Inicio.aspx, la ruta es "Inicio.aspx/CerrarSesion"
+        url: "Inicio.aspx/CerrarSesion",
+        type: "POST",
+        data: "{}",
+        dataType: "json",
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            if (response.d.Estado) {
+                // 1. Limpiar rastro en cliente
+                sessionStorage.clear();
+                localStorage.clear(); // Por si usaste localstorage
+
+                // 2. Redireccionar
+                // Usamos 'replace' para que el usuario no pueda volver atrás con el botón del navegador
+                // Ajusta la ruta "../Login.aspx" dependiendo de qué tan adentro esté tu archivo
+                window.location.replace('Login.aspx');
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log("Error al cerrar sesión");
+            // Si falla el servidor, igual sacamos al usuario visualmente por seguridad
+            window.location.replace('Login.aspx');
+        }
+    });
 }
+
+//function EjecutarCierreSesion() {
+//    sessionStorage.clear();
+//    window.location.replace('Login.aspx');
+//}
 
 // Cierre de sesión por inactividad
 //5 minutos = 5 * 60 * 1000 = 300000 ms

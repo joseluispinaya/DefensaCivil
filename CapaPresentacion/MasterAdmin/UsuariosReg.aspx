@@ -29,7 +29,6 @@
                                     <i class="ti ti-map-2 me-1"></i>Regional
                                 </span>
                                 <select class="form-select" id="cboRegional" aria-describedby="addon-regional">
-                                    <option value="1">Responsable satatatat</option>
                                 </select>
                             </div>
                             <button type="button" id="btnNuevore" class="btn btn-sm btn-info"><i class="ti ti-plus fs-16 align-middle me-1"></i>Nuevo Registro</button>
@@ -41,10 +40,12 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Imagen</th>
-                                <th>Grado</th>
                                 <th>Usuarios</th>
+                                <th>Nro CI</th>
+                                <th>Nro Cel</th>
                                 <th>Rol</th>
                                 <th>Correos</th>
+                                <th>Estado</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -79,7 +80,7 @@
                                     </div>
                                     <div class="mb-2">
                                         <label for="txtNroci" class="form-label">Nro C.I.</label>
-                                        <input type="text" id="txtNroci" name="NroCI" class="form-control form-control-sm model">
+                                        <input type="text" id="txtNroci" name="Nro CI" class="form-control form-control-sm model">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -92,50 +93,59 @@
                                         <input type="number" id="txtCelular" name="Celular" class="form-control form-control-sm model">
                                     </div>
                                     <div class="mb-2">
-                                        <label for="cboRoles" class="form-label">Rol</label>
-                                        <select class="form-select form-select-sm" id="cboRoles">
-                                            <option value="1">Responsable</option>
-                                            <option value="2">Tecnico</option>
-                                            <option value="3">Auxiliar</option>
+                                        <label for="cboRegionalModal" class="form-label">Regional</label>
+                                        <select class="form-select form-select-sm" id="cboRegionalModal">
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-2">
+                            <div class="mb-1">
                                 <label for="txtFoto" class="form-label">Seleccione imagen</label>
                                 <input type="file" id="txtFoto" class="form-control form-control-sm" accept="image/*">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="row">
-                                <div class="mb-3 col-md-6">
-                                    <label for="cboFuerzas" class="form-label">Fuerza</label>
-                                    <select class="form-select form-select-sm" id="cboFuerzas">
-                                        <option value="1">Ejercito</option>
-                                        <option value="2">Fuerza Aerea</option>
-                                        <option value="3">Armada</option>
+                                <div class="mb-2 col-md-6">
+                                    <label for="cboRoles" class="form-label">Rol</label>
+                                    <select class="form-select form-select-sm" id="cboRoles">
                                     </select>
                                 </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="cboGrados" class="form-label">Grado</label>
-                                    <select class="form-select form-select-sm" id="cboGrados">
-                                        <option value="1">Sargento</option>
-                                        <option value="2">Fuerza Aerea</option>
-                                        <option value="3">Armada</option>
+                                <div class="mb-2 col-md-6">
+                                    <label for="cboEstado" class="form-label">Estado</label>
+                                    <select class="form-select form-select-sm" id="cboEstado">
+                                        <option value="1">Activo</option>
+                                        <option value="0">Inactivo</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="text-center mb-3">
+                            <div class="row">
+                                <div class="mb-2 col-md-6">
+                                    <label for="cboFuerzas" class="form-label">Fuerzas</label>
+                                    <select class="form-select form-select-sm" id="cboFuerzas">
+                                    </select>
+                                </div>
+                                <div class="mb-2 col-md-6">
+                                    <label for="cboGrados" class="form-label">Grados</label>
+                                    <select class="form-select form-select-sm" id="cboGrados" disabled>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2 mb-1">
                                 <img src="../Imagenes/sinimagen.png" id="imgUsureg" alt="image" class="img-fluid rounded-circle usuario-perfil" />
                             </div>
-                            <div class="mb-2">
+                            <%--<div class="mb-2">
                                 <div class="d-flex justify-content-center border border-dashed rounded p-2">
                                     <button type="button" class="btn btn-sm btn-secondary me-2" data-bs-dismiss="modal"><i class="ti ti-square-rounded-x fs-16 align-middle me-1"></i>Salir</button>
                                     <button type="button" id="btnGuardarReg" class="btn btn-sm btn-success"><i class="ti ti-device-floppy fs-16 align-middle me-1"></i>Guardar</button>
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"><i class="ti ti-square-rounded-x fs-16 align-middle me-1"></i>Salir</button>
+                    <button type="button" id="btnGuardarCambios" class="btn btn-sm btn-success"><i class="ti ti-device-floppy fs-16 align-middle me-1"></i>Guardar</button>
                 </div>
             </div>
         </div>

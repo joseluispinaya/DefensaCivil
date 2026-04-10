@@ -301,5 +301,93 @@ namespace CapaDatos
             return response;
         }
 
+        // fuerzas y grados
+        public Respuesta<List<EFuerzas>> ListaFuerzas()
+        {
+            try
+            {
+                List<EFuerzas> rptLista = new List<EFuerzas>();
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ListarFuerzas", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new EFuerzas
+                                {
+                                    IdFuerza = Convert.ToInt32(dr["IdFuerza"]),
+                                    Descripcion = dr["Descripcion"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<EFuerzas>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Lista obtenida correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<List<EFuerzas>>()
+                {
+                    Estado = false,
+                    Data = null,
+                    Mensaje = $"Error al obtener la lista: {ex.Message}"
+                };
+            }
+        }
+
+        public Respuesta<List<EGrados>> ListaGrados(int IdFuerza)
+        {
+            try
+            {
+                List<EGrados> rptLista = new List<EGrados>();
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ListarGrados", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@IdFuerza", IdFuerza);
+                        con.Open();
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new EGrados
+                                {
+                                    IdGrado = Convert.ToInt32(dr["IdGrado"]),
+                                    IdFuerza = Convert.ToInt32(dr["IdFuerza"]),
+                                    NombreGrado = dr["NombreGrado"].ToString(),
+                                    Abreviado = dr["Abreviado"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<EGrados>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Lista obtenida correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<List<EGrados>>()
+                {
+                    Estado = false,
+                    Data = null,
+                    Mensaje = $"Error al obtener la lista: {ex.Message}"
+                };
+            }
+        }
+
     }
 }

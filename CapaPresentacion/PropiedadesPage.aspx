@@ -57,25 +57,19 @@
                                         <div class="mb-3 col-md-2">
                                             <label for="cboTipoPro" class="form-label">Tipo Propiedad</label>
                                             <select class="form-select form-select-sm" id="cboTipoPro">
-                                                <option value="1">Vivienda</option>
-                                                <option value="2">Oficina</option>
-                                                <option value="3">Cuartel</option>
                                             </select>
                                         </div>
                                         <div class="mb-3 col-md-2">
                                             <label for="cboEstadoPro" class="form-label">Estado Propiedad</label>
                                             <select class="form-select form-select-sm" id="cboEstadoPro">
-                                                <option value="1">Observacion</option>
-                                                <option value="2">Donacion</option>
-                                                <option value="3">En adjudicacion</option>
                                             </select>
                                         </div>
                                         <div class="mb-3 col-md-2">
                                             <label for="cboZona" class="form-label">Tipo de Zona</label>
                                             <select class="form-select form-select-sm" id="cboZona">
-                                                <option>Tipo de Zona</option>
-                                                <option>Urbana</option>
-                                                <option>Rural</option>
+                                                <option value="">Seleccione Zona</option>
+                                                <option value="Urbana">Urbana</option>
+                                                <option value="Rural">Rural</option>
                                             </select>
                                         </div>
                                     </div>
@@ -100,7 +94,7 @@
                                         <div class="col-md-5">
                                             <div class="mb-3">
                                                 <label class="form-label" for="txtDescripGen">Descripcion General</label>
-                                                <textarea class="form-control" id="txtDescripGen" placeholder="Ingrese una descripcion general de la propiedad" rows="5"></textarea>
+                                                <textarea class="form-control model" id="txtDescripGen" name="Descripcion General" placeholder="Ingrese una descripcion general de la propiedad" rows="5"></textarea>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -130,21 +124,36 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <h5 class="mb-2">Dimencion de la Propiedad</h5>
+
                                             <div class="row">
-                                                <div class="mb-3 col-md-6">
-                                                    <div class="input-group input-group-sm flex-nowrap">
-                                                        <span class="input-group-text" id="grouplargo">Largo Mts</span>
-                                                        <input type="text" class="form-control" id="txtLargo" aria-label="Largo" aria-describedby="grouplargo">
-                                                    </div>
+                                                <div class="col-md-6">
+                                                    <h5 class="mb-2">Riesgo deslizamineto?</h5>
+                                                    <ul class="list-group mb-3">
+                                                        <li class="list-group-item">
+                                                            <input class="form-check-input me-1" type="radio" name="deslizamientoGroupRadio" value=""
+                                                                id="radiodeslizaSi" checked>
+                                                            <label class="form-check-label" for="radiodeslizaSi">Si</label>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input class="form-check-input me-1" type="radio" name="deslizamientoGroupRadio" value=""
+                                                                id="radiodeslizaNo">
+                                                            <label class="form-check-label" for="radiodeslizaNo">No</label>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                                <div class="mb-3 col-md-6">
+                                                <div class="col-md-6">
+                                                    <h5 class="mb-2">Dimencion de la Propiedad</h5>
+                                                    <div class="input-group input-group-sm mb-3 flex-nowrap">
+                                                        <span class="input-group-text" id="grouplargo">Largo Mts</span>
+                                                        <input type="number" class="form-control" id="txtLargo" aria-label="Largo" aria-describedby="grouplargo">
+                                                    </div>
                                                     <div class="input-group input-group-sm flex-nowrap">
                                                         <span class="input-group-text" id="groupancho">Ancho Mts</span>
-                                                        <input type="text" class="form-control" id="txtAncho" aria-label="Ancho" aria-describedby="groupancho">
+                                                        <input type="number" class="form-control" id="txtAncho" aria-label="Ancho" aria-describedby="groupancho">
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="col-md-7">
                                             <div class="card card-body">
@@ -192,7 +201,6 @@
                                                     <div class="d-flex justify-content-center gap-2">
                                                         <button type="button" id="btnGuardar" class="btn btn-success gap-1"><i class="ti ti-device-floppy fs-16"></i>Registrar</button>
                                                         <button type="button" id="btnImprimirr" class="btn btn-primary gap-1"><i class="ti ti-printer fs-16"></i>Imprimir</button>
-                                                        <a href="#" class="btn btn-info gap-1"><i class="ti ti-arrow-badge-left fs-18"></i>Volver</a>
                                                     </div>
                                                 </div>
                                             </div>

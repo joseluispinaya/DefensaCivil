@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionBD.cs" />
+    <Compile Include="DPropiedad.cs" />
     <Compile Include="DRegional.cs" />
     <Compile Include="DUbicaciones.cs" />
+    <Compile Include="DUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

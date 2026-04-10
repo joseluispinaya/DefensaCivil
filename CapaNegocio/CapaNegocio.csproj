@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NPropiedad.cs" />
     <Compile Include="NRegional.cs" />
     <Compile Include="NUbicaciones.cs" />
     <Compile Include="NUsuarios.cs" />

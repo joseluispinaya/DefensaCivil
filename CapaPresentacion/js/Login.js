@@ -45,62 +45,116 @@ $(document).ready(function () {
     // EVENTO SUBMIT DEL FORMULARIO DE LOGIN
     // ==========================================
     $('#frmLogin').on('submit', function (e) {
-        // A) Evitamos que la página web se recargue por defecto
         e.preventDefault();
 
-        // B) Bloqueamos el botón para evitar doble clic
         let btnSubmit = $(this).find('button[type="submit"]');
         btnSubmit.prop('disabled', true);
 
-        // C) Capturamos los valores
         let usuario = $('#inputCorreo').val().trim();
         let password = $('#inputPassword').val().trim();
         let captchaInput = $('#inputCaptcha').val().trim();
         let captchaGenerado = $('#muestracapchap').text();
 
-        // D) Validación estricta del Captcha (Sensible a mayúsculas/minúsculas)
-        if (captchaInput !== captchaGenerado) {
-            ToastLogin.fire({
-                icon: 'error',
-                title: 'El código de seguridad no coincide. Intente nuevamente.'
-            });
+        //if (captchaInput !== captchaGenerado) {
+        //    ToastLogin.fire({
+        //        icon: 'error',
+        //        title: 'El código de seguridad no coincide. Intente nuevamente.'
+        //    });
+        //    show();
+        //    $('#inputCaptcha').val('').focus();
+        //    btnSubmit.prop('disabled', false);
+        //    return;
+        //}
 
-            show(); // Regeneramos código
-            $('#inputCaptcha').val('').focus();
-            btnSubmit.prop('disabled', false); // Liberamos el botón
-            return;
-        }
-
-        // E) Mostrar Pantalla de Carga (LoadingOverlay en modo oscuro)
         $.LoadingOverlay("show", {
             image: "",
             custom: '<div class="spinner-border text-warning m-2" style="height: 5rem; width: 5rem;" role="status"></div>',
-            //fontawesome: "ti ti-loader-2 ti-spin",
             text: "Verificando credenciales...",
             textColor: "#ffffff",
             background: "rgba(0, 0, 0, 0.85)"
         });
 
         $.ajax({
-            url: "Login.aspx/LoginUsuario",
+            url: "Login.aspx/Iniciar",
             type: "POST",
             data: JSON.stringify({ Correo: usuario, Clave: password }),
             dataType: "json",
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
 
+                if (!response.d.Estado) {
+                    if (response.d.Valor === "admin") {
+                        // ¡OJO! Aquí NO ocultamos el LoadingOverlay. 
+                        // Se lo pasamos directo a la otra función para que se vea continuo.
+                        // También le pasamos el btnSubmit para que lo libere si falla.
+                        loginSistemaAdmin(usuario, password, btnSubmit);
+                    } else {
+                        $.LoadingOverlay("hide");
+                        mostrarAlerta("¡Atención!", response.d.Mensaje, "warning", "btn btn-warning");
+                        show();
+                        $('#inputCaptcha').val('');
+                        $('#inputPassword').val('').focus();
+                        btnSubmit.prop('disabled', false); // Liberamos el botón porque falló
+                    }
+                    return;
+                }
+
+                // SI ES USUARIO REGULAR
                 $.LoadingOverlay("hide");
+                const user = response.d.Data;
+                sessionStorage.clear();
+                sessionStorage.setItem('usuaLog', JSON.stringify(user));
+
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Acceso Autorizado!',
+                    text: '¡Bienvenido al sistema usuario!',
+                    background: '#1a1d24',
+                    color: '#fff',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+
+                $("#inputCorreo, #inputPassword, #inputCaptcha").val("");
+                setTimeout(() => window.location.href = 'Inicio.aspx', 2200);
+
+                // Nota: Aquí no liberamos el btnSubmit porque ya vamos a redireccionar de página.
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                $.LoadingOverlay("hide");
+                mostrarAlerta("Error", "Error de comunicación con el servidor.", "error", "btn btn-danger");
+                console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+                btnSubmit.prop('disabled', false);
+            }
+        });
+    });
+
+    // Agregamos btnSubmit como parámetro
+    function loginSistemaAdmin(usuario, password, btnSubmit) {
+
+        // Opcional: Puedes cambiar el texto del LoadingOverlay en vivo para que el usuario 
+        // sepa que el sistema detectó su perfil de admin.
+        $.LoadingOverlay("text", "Iniciando como Administrador...");
+
+        $.ajax({
+            url: "Login.aspx/LoginAdmin",
+            type: "POST",
+            data: JSON.stringify({ Correo: usuario, Clave: password }),
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+
+                $.LoadingOverlay("hide"); // Ahora sí lo apagamos
+
                 if (response.d.Estado) {
                     const user = response.d.Data;
-
                     sessionStorage.clear();
-                    // Almacenar el objeto usuario completo en sessionStorage
-                    sessionStorage.setItem('usuaLog', JSON.stringify(user));
+                    sessionStorage.setItem('usuaAdmin', JSON.stringify(user));
 
                     Swal.fire({
                         icon: 'success',
                         title: '¡Acceso Autorizado!',
-                        text: '¡Bienvenido al sistema usuario!',
+                        text: '¡Bienvenido al sistema Admin!',
                         background: '#1a1d24',
                         color: '#fff',
                         showConfirmButton: false,
@@ -108,27 +162,28 @@ $(document).ready(function () {
                     });
 
                     $("#inputCorreo, #inputPassword, #inputCaptcha").val("");
-
-                    setTimeout(() => window.location.href = 'Inicio.aspx', 2200);
+                    setTimeout(() => window.location.href = 'MasterAdmin/InicioAdmin.aspx', 2200);
 
                 } else {
                     mostrarAlerta("¡Atención!", response.d.Mensaje, "warning", "btn btn-warning");
-                    // Si falla la contraseña, también es buena práctica cambiar el captcha
                     show();
                     $('#inputCaptcha').val('');
                     $('#inputPassword').val('').focus();
+
+                    // Si el admin pone mal su contraseña, liberamos el botón para que intente de nuevo
+                    btnSubmit.prop('disabled', false);
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 $.LoadingOverlay("hide");
                 mostrarAlerta("Error", "Error de comunicación con el servidor.", "error", "btn btn-danger");
-                console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
-            },
-            complete: function () {
-                btnSubmit.prop('disabled', false); // Liberamos el botón
+                console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+
+                // Liberar botón en caso de error de conexión
+                btnSubmit.prop('disabled', false);
             }
         });
-    });
+    }
 
     // ==========================================
     // EVENTO SUBMIT DEL FORMULARIO DE RECUPERAR

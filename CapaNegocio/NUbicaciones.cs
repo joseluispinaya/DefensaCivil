@@ -47,5 +47,16 @@ namespace CapaNegocio
         {
             return DUbicaciones.GetInstance().GuardarOrEditProvincia(objeto);
         }
+
+        // fuerzas y grados
+        public Respuesta<List<EFuerzas>> ListaFuerzas()
+        {
+            return DUbicaciones.GetInstance().ListaFuerzas();
+        }
+
+        public Respuesta<List<EGrados>> ListaGrados(int IdFuerza)
+        {
+            return DUbicaciones.GetInstance().ListaGrados(IdFuerza);
+        }
     }
 }
