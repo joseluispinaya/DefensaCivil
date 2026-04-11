@@ -149,7 +149,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item dropdown hover-dropdown">
+                            <%--<li class="nav-item dropdown hover-dropdown">
                                 <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-apps" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="menu-icon"><i class="ti ti-air-balloon"></i></span>
                                     <span class="menu-text">Ubicaciones</span>
@@ -160,7 +160,7 @@
                                     <a href="#" class="dropdown-item">Calendar</a>
                                     <a href="#" class="dropdown-item">Email</a>
                                 </div>
-                            </li>
+                            </li>--%>
 
                             <li class="nav-item dropdown hover-dropdown">
                                 <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-usuarios" role="button"
@@ -183,43 +183,20 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-charts">
                                     <a href="PropiedadesPage.aspx" class="dropdown-item">Registros</a>
+                                    <a href="ListapropiedadesPage.aspx" class="dropdown-item">Lista propiedades</a>
                                     <a href="ConsultasPage.aspx" class="dropdown-item">Consultas</a>
-                                    <a href="#" class="dropdown-item">Sugerencias</a>
-                                </div>
-                            </li>
-
-                            <li class="nav-item dropdown hover-dropdown">
-                                <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-components" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="menu-icon"><i class="ti ti-components"></i></span>
-                                    <span class="menu-text">Components</span>
-                                    <div class="menu-arrow"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-components">
-                                    <div class="dropdown hover-dropdown">
-                                        <a class="dropdown-item dropdown-toggle drop-arrow-none" href="#" id="topnav-ui-kit" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Base UI 1
-                                            <div class="menu-arrow"></div>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="topnav-ui-kit">
-                                            <a href="ui-accordions.html" class="dropdown-item">Accordions</a>
-                                            <a href="ui-alerts.html" class="dropdown-item">Alerts</a>
-                                            <a href="ui-avatars.html" class="dropdown-item">Avatars</a>
-                                            <a href="ui-badges.html" class="dropdown-item">Badges</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </li>
 
                             <li class="nav-item dropdown hover-dropdown">
                                 <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-layouts" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="menu-icon"><i class="ti ti-layout"></i></span>
-                                    <span class="menu-text">Layouts</span>
+                                    <span class="menu-text">Georreferencia</span>
                                     <div class="menu-arrow"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-layouts">
-                                    <a href="index.html" class="dropdown-item" target="_blank">Vertical</a>
-                                    <a href="layouts-horizontal.html" class="dropdown-item" target="_blank">Horizontal</a>
-                                    <a href="layouts-full.html" class="dropdown-item" target="_blank">Full</a>
+                                    <a href="UbicacionPage.aspx" class="dropdown-item">Iniciar Geo</a>
+                                    <%--<a href="layouts-horizontal.html" class="dropdown-item">Horizontal</a>--%>
                                 </div>
                             </li>
                         </ul>
