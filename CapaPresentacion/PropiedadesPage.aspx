@@ -156,29 +156,57 @@
 
                                         </div>
                                         <div class="col-md-7">
-                                            <div class="card card-body">
+                                            <div class="card card-body" id="loadinzero">
                                                 <h5 class="mb-2">Seleccione Ubicacion</h5>
                                                 <div id="mapa" class="gmaps mb-3"></div>
+
                                                 <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="input-group input-group-sm flex-nowrap">
+                                                            <span class="input-group-text" id="grouplati">Latitud</span>
+                                                            <input type="text" class="form-control" id="txtLatitud" aria-label="Latitud"
+                                                                aria-describedby="grouplati" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group input-group-sm flex-nowrap">
+                                                            <span class="input-group-text" id="grouplongi">Longitud</span>
+                                                            <input type="text" class="form-control" id="txtLongitud" aria-label="Longitud"
+                                                                aria-describedby="grouplongi" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button type="button" id="btnConsultarDes" class="btn btn-sm btn-success">
+                                                            <i class="ti ti-home-search fs-16 align-middle me-1"></i>Generar Des.
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <%--<div class="row">
                                                     <div class="col-md-8 offset-md-2">
                                                         <div class="row">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-5">
                                                                 <div class="input-group input-group-sm flex-nowrap">
                                                                     <span class="input-group-text" id="grouplati">Latitud</span>
                                                                     <input type="text" class="form-control" id="txtLatitud" aria-label="Latitud"
                                                                         aria-describedby="grouplati" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-5">
                                                                 <div class="input-group input-group-sm flex-nowrap">
                                                                     <span class="input-group-text" id="grouplongi">Longitud</span>
                                                                     <input type="text" class="form-control" id="txtLongitud" aria-label="Longitud"
                                                                         aria-describedby="grouplongi" readonly>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-md-2">
+                                                                <button type="button" id="btnConsultarDes" class="btn btn-sm btn-success">
+                                                                    <i class="ti ti-home-search fs-16 align-middle me-1"></i>Generar
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>--%>
                                             </div>
                                             
                                             

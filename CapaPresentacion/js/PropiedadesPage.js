@@ -345,4 +345,55 @@ function enviarAjaxPropieda(objeto, base64String) {
     });
 }
 
+$("#btnConsultarDes").on("click", function () {
+    $('#btnConsultarDes').prop('disabled', true);
+
+    if ($("#txtLatitud").val() === "" || $("#txtLongitud").val() === "") {
+        ToastMaster.fire({ icon: 'warning', title: 'Debe ingresar ubicación para la consulta.' });
+        $('#btnConsultarDes').prop('disabled', false); // Liberar si falta la ubicación
+        return;
+    }
+
+    var request = {
+        Latitud: parseFloat($("#txtLatitud").val()),
+        Longitud: parseFloat($("#txtLongitud").val())
+    };
+
+    $("#loadinzero").LoadingOverlay("show", {
+        image: "",
+        custom: '<div class="spinner-border text-warning m-2" style="height: 5rem; width: 5rem;" role="status"></div>',
+        text: "Esperando respuesta...",
+        textResizeFactor: 0.2,
+        textColor: "#ffffff",
+        background: "rgba(0, 0, 0, 0.85)"
+    });
+
+    $.ajax({
+        url: "ModeloLmPage.aspx/AnalizarCoordenadas",
+        type: "POST",
+        data: JSON.stringify(request),
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        success: function (response) {
+            $("#loadinzero").LoadingOverlay("hide");
+            if (response.d.Estado) {
+                //console.log("Respuesta del servidor:", response.d.Data);
+                $("#txtDescripGen").val(response.d.Data);
+                ToastMaster.fire({ icon: 'success', title: 'Descripcion obtenida correctamente.' });
+            } else {
+                mostrarAlertaZero("¡Atención!", response.d.Mensaje, "warning");
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+            $("#loadinzero").LoadingOverlay("hide");
+            mostrarAlertaZero("¡Atención!", "Error de comunicación con el servidor.", "error");
+        },
+        complete: function () {
+            $('#btnConsultarDes').prop('disabled', false);
+        }
+    });
+
+});
+
 // fin

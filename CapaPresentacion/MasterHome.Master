@@ -196,6 +196,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-layouts">
                                     <a href="UbicacionPage.aspx" class="dropdown-item">Iniciar Geo</a>
+                                    <a href="ModeloLmPage.aspx" class="dropdown-item">Prueba ML</a>
                                     <%--<a href="layouts-horizontal.html" class="dropdown-item">Horizontal</a>--%>
                                 </div>
                             </li>
