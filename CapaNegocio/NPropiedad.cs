@@ -54,5 +54,15 @@ namespace CapaNegocio
         {
             return DPropiedad.GetInstance().ListaPropiedadesCoordenadas(IdRegional, LatitudActual, LongitudActual);
         }
+
+        public Respuesta<List<PropiedadesDTO>> FiltroPropiedades(string Busqueda, int IdRegional)
+        {
+            return DPropiedad.GetInstance().FiltroPropiedades(Busqueda, IdRegional);
+        }
+
+        public Respuesta<PropiedadIADTO> InfoPropiedad(int IdPropiedad)
+        {
+            return DPropiedad.GetInstance().InfoPropiedad(IdPropiedad);
+        }
     }
 }

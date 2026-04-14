@@ -56,21 +56,6 @@
                 </div>
 
                 <div class="card-body">
-                    <%--<div class="mb-3">
-                        <div class="d-flex justify-content-center">
-                            <div class="input-group input-group-sm flex-nowrap me-2">
-                                <span class="input-group-text" id="grouplati">Latitud</span>
-                                <input type="text" class="form-control" id="txtLatitud" aria-label="Latitud" aria-describedby="grouplati" readonly>
-                            </div>
-
-                            <div class="input-group input-group-sm flex-nowrap me-2">
-                                <span class="input-group-text" id="grouplongi">Longitud</span>
-                                <input type="text" class="form-control" id="txtLongitud" aria-label="Longitud" aria-describedby="grouplongi" readonly>
-                            </div>
-
-                            <button type="button" id="btnUbicacion" class="btn btn-sm btn-info"><i class="ti ti-map-pin fs-16 align-middle me-1"></i>Ubicacion</button>
-                        </div>
-                    </div>--%>
 
                     <table class="table table-striped table-hover align-middle w-100" id="tbPropiedades">
                         <thead class="table-light">

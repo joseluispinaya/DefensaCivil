@@ -84,5 +84,35 @@ namespace CapaPresentacion
                 return new Respuesta<int> { Estado = false, Valor = "error", Mensaje = "Error en el servidor: " + ex.Message };
             }
         }
+
+        [WebMethod(EnableSession = true)]
+        public static Respuesta<List<UsuarioAccesoDTO>> ControlUsuariosIdRegional()
+        {
+            // 1. Validar Sesión
+            if (HttpContext.Current.Session["UsuarioLogueado"] == null)
+            {
+                return new Respuesta<List<UsuarioAccesoDTO>> { Estado = false, Mensaje = "Su sesión ha expirado. Recargue la página." };
+            }
+
+            try
+            {
+                // 3. Obtener el ID del Docente de la sesión (Seguro)
+                UsuarioLogDTO usuari = (UsuarioLogDTO)HttpContext.Current.Session["UsuarioLogueado"];
+
+                return NUsuarios.GetInstance().ControlUsuariosIdRegional(usuari.IdRegional);
+            }
+            catch (Exception ex)
+            {
+                // Captura cualquier error no previsto en la capa de presentación
+                return new Respuesta<List<UsuarioAccesoDTO>> { Estado = false, Mensaje = "Ocurrió un error inesperado: " + ex.Message };
+            }
+        }
+
+        [WebMethod]
+        public static Respuesta<List<DetalleAccesoDTO>> HistorialAccesoUser(int IdUsuario)
+        {
+            return NUsuarios.GetInstance().HistorialAccesoUser(IdUsuario);
+        }
+
     }
 }

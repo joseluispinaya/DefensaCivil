@@ -22,21 +22,40 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table table-striped table-sm" id="tbUsuarios" cellspacing="0" style="width: 100%">
-                        <thead>
+                    <table class="table table-striped table-hover align-middle table-sm" id="tbUsuarios" cellspacing="0" style="width: 100%">
+                        <thead class="table-light">
                             <tr>
                                 <th>Id</th>
-                                <th>Imagen</th>
-                                <th>Grado</th>
-                                <th>Usuarios</th>
-                                <th>Rol</th>
-                                <th>Correos</th>
-                                <th>Opciones</th>
+                                <th class="text-center">Imagen</th>
+                                <th><i class="ti ti-user-circle me-1 text-muted"></i>Usuarios</th>
+                                <th><i class="ti ti-id-badge me-1 text-muted"></i>Rol</th>
+                                <th><i class="ti ti-mail me-1 text-muted"></i>Correo</th>
+                                <th class="text-center"><i class="ti ti-activity me-1 text-muted"></i>Estado</th>
+                                <th class="text-center"><i class="ti ti-login me-1 text-muted"></i>Accesos</th>
+                                <th><i class="ti ti-calendar me-1 text-muted"></i>Fecha Reg.</th>
+                                <th class="text-center"><i class="ti ti-settings me-1 text-muted"></i>Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>
+                    <%--<table class="table table-striped table-sm" id="tbUsuarios" cellspacing="0" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Imagen</th>
+                                <th>Usuarios</th>
+                                <th>Rol</th>
+                                <th>Correos</th>
+                                <th>Estado</th>
+                                <th>Nro. Acceso</th>
+                                <th>Fecha Reg.</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>--%>
                 </div>
             </div>
         </div>
@@ -44,7 +63,7 @@
 
     <div id="modalAdd" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalLabeldetalle"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="modalLabeldetalle">Usuarios</h4>
@@ -52,76 +71,22 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-7">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-2">
-                                        <label for="txtNombrees" class="form-label">Nombres</label>
-                                        <input type="text" id="txtNombrees" name="Nombre" class="form-control form-control-sm model">
-                                    </div>
-                                    <div class="mb-2">
-                                        <label for="txtCorreo" class="form-label">Correo</label>
-                                        <input type="text" id="txtCorreo" name="Correo" class="form-control form-control-sm model">
-                                    </div>
-                                    <div class="mb-2">
-                                        <label for="txtNroci" class="form-label">Nro C.I.</label>
-                                        <input type="text" id="txtNroci" name="NroCI" class="form-control form-control-sm model">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-2">
-                                        <label for="txtApellidos" class="form-label">Apellidos</label>
-                                        <input type="text" id="txtApellidos" name="Apellidos" class="form-control form-control-sm model">
-                                    </div>
-                                    <div class="mb-2">
-                                        <label for="txtCelular" class="form-label">Celular</label>
-                                        <input type="number" id="txtCelular" name="Celular" class="form-control form-control-sm model">
-                                    </div>
-                                    <div class="mb-2">
-                                        <label for="cboRoles" class="form-label">Rol</label>
-                                        <select class="form-select form-select-sm" id="cboRoles">
-                                            <option value="1">Responsable</option>
-                                            <option value="2">Tecnico</option>
-                                            <option value="3">Auxiliar</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <label for="txtFoto" class="form-label">Seleccione imagen</label>
-                                <input type="file" id="txtFoto" class="form-control form-control-sm" accept="image/*">
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="row">
-                                <div class="mb-3 col-md-6">
-                                    <label for="cboFuerzas" class="form-label">Fuerza</label>
-                                    <select class="form-select form-select-sm" id="cboFuerzas">
-                                        <option value="1">Ejercito</option>
-                                        <option value="2">Fuerza Aerea</option>
-                                        <option value="3">Armada</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="cboGrados" class="form-label">Grado</label>
-                                    <select class="form-select form-select-sm" id="cboGrados">
-                                        <option value="1">Sargento</option>
-                                        <option value="2">Fuerza Aerea</option>
-                                        <option value="3">Armada</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="text-center mb-3">
-                                <img src="Imagenes/sinimagen.png" id="imgUsureg" alt="image" class="img-fluid rounded-circle usuario-perfil" />
-                            </div>
-                            <div class="mb-2">
-                                <div class="d-flex justify-content-center border border-dashed rounded p-2">
-                                    <button type="button" class="btn btn-sm btn-secondary me-2" data-bs-dismiss="modal"><i class="ti ti-square-rounded-x me-1 fs-20"></i>Salir</button>
-                                    <button type="button" id="btnGuardarReg" class="btn btn-sm btn-success"><i class="ti ti-device-floppy me-1 fs-20"></i>Guardar</button>
-                                </div>
-                            </div>
+                        <div class="col-md-12">
+                            <table class="table table-striped table-sm" id="tbDetallesAcceso" cellspacing="0" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha y Hora de Accesos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"><i class="ti ti-square-rounded-x me-1 fs-20"></i>Salir</button>
+                    <button type="button" id="btnReporte" class="btn btn-sm btn-info"><i class="ti ti-printer me-1 fs-20"></i>Reporte</button>
                 </div>
                 <%--<div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="ti ti-square-rounded-x me-1 fs-20"></i>Salir</button>

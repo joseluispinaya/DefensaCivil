@@ -300,5 +300,108 @@ namespace CapaDatos
             }
         }
 
+        public Respuesta<List<UsuarioAccesoDTO>> ControlUsuariosIdRegional(int IdRegional)
+        {
+            try
+            {
+                List<UsuarioAccesoDTO> rptLista = new List<UsuarioAccesoDTO>();
+
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ControlAccesoUser", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@IdRegional", IdRegional);
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new UsuarioAccesoDTO
+                                {
+                                    IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                    Usua = dr["Usua"].ToString(),
+                                    Descripcion = dr["Descripcion"].ToString(), // rol
+                                    Correo = dr["Correo"].ToString(),
+                                    FotoUrl = dr["FotoUrl"].ToString(),
+                                    Estado = Convert.ToBoolean(dr["Estado"]),
+                                    FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"]).ToString("dd/MM/yyyy"),
+                                    NroAccesos = Convert.ToInt32(dr["NroAccesos"])
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<UsuarioAccesoDTO>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Lista obtenidos correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<UsuarioAccesoDTO>>()
+                {
+                    Estado = false,
+                    Mensaje = "Ocurrió un error: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
+
+        public Respuesta<List<DetalleAccesoDTO>> HistorialAccesoUser(int IdUsuario)
+        {
+            try
+            {
+                List<DetalleAccesoDTO> rptLista = new List<DetalleAccesoDTO>();
+
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_HistorialAccesoUser", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new DetalleAccesoDTO
+                                {
+                                    IdAcceso = Convert.ToInt32(dr["IdAcceso"]),
+                                    IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                    //OPCIÓN 1: Formato tradicional (Ej: 14/04/2026 15:30:21)
+                                    FechaHoraLocal = dr["FechaHoraLocal"].ToString(),
+                                    //OPCIÓN 2: Formato amigable en español (Ej: 14 de abril de 2026 15:30:21)
+                                    FechaHoraNew = dr["FechaHoraNew"].ToString(),
+                                    FechaFiltroOculta = Convert.ToDateTime(dr["FechaFiltroOculta"].ToString())
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<DetalleAccesoDTO>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Lista obtenidos correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<DetalleAccesoDTO>>()
+                {
+                    Estado = false,
+                    Mensaje = "Ocurrió un error: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
+
     }
 }

@@ -403,5 +403,133 @@ namespace CapaDatos
             }
         }
 
+        public Respuesta<List<PropiedadesDTO>> FiltroPropiedades(string Busqueda, int IdRegional)
+        {
+            try
+            {
+                List<PropiedadesDTO> rptLista = new List<PropiedadesDTO>();
+
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_FiltroPropiedades", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@Busqueda", Busqueda);
+                        comando.Parameters.AddWithValue("@IdRegional", IdRegional);
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new PropiedadesDTO
+                                {
+                                    IdPropiedad = Convert.ToInt32(dr["IdPropiedad"]),
+                                    IdRegional = Convert.ToInt32(dr["IdRegional"]),
+                                    IdTipoPropi = Convert.ToInt32(dr["IdTipoPropi"]),
+                                    TipoPropiedad = dr["TipoPropiedad"].ToString(), // Ej: 'Terreno', 'Cuartel'
+                                    IdEstadoProp = Convert.ToInt32(dr["IdEstadoProp"]),
+                                    EstadoLegal = dr["EstadoLegal"].ToString(), // Ej: 'Donacion', 'En adjudicacion'
+                                    CodCatastral = dr["CodCatastral"].ToString(),
+                                    NroFolio = dr["NroFolio"].ToString(),
+                                    DocumentacionUrl = dr["DocumentacionUrl"].ToString(),
+                                    DescripcionGen = dr["DescripcionGen"].ToString(),
+                                    Direccion = dr["Direccion"].ToString(),
+                                    Zona = dr["Zona"].ToString(),
+                                    Latitud = Convert.ToDecimal(dr["Latitud"]),
+                                    Longitud = Convert.ToDecimal(dr["Longitud"]),
+                                    AreaM2 = Convert.ToDecimal(dr["AreaM2"]),
+                                    Largo = Convert.ToDecimal(dr["Largo"]),
+                                    Ancho = Convert.ToDecimal(dr["Ancho"]),
+                                    Topografia = dr["Topografia"].ToString(),
+                                    TipoSuelo = dr["TipoSuelo"].ToString(),
+
+                                    ServiciosBas = Convert.ToBoolean(dr["ServiciosBas"]),
+                                    RiesgoInundacion = Convert.ToBoolean(dr["RiesgoInundacion"]),
+                                    RiesgoDeslizamiento = Convert.ToBoolean(dr["RiesgoDeslizamiento"]),
+                                    Estado = Convert.ToBoolean(dr["Estado"]),
+                                    FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"]).ToString("dd/MM/yyyy")
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<PropiedadesDTO>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Lista obtenidos correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<PropiedadesDTO>>()
+                {
+                    Estado = false,
+                    Mensaje = "Ocurrió un error: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
+
+        public Respuesta<PropiedadIADTO> InfoPropiedad(int IdPropiedad)
+        {
+
+            try
+            {
+                PropiedadIADTO obj = null;
+
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerDatosPropiedadParaIA", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@IdPropiedad", IdPropiedad);
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                obj = new PropiedadIADTO
+                                {
+                                    TipoPropiedad = dr["TipoPropiedad"].ToString(),
+                                    SituacionLegal = dr["SituacionLegal"].ToString(),
+                                    Zona = dr["Zona"].ToString(),
+
+                                    AreaM2 = Convert.ToDecimal(dr["AreaM2"]),
+                                    Largo = Convert.ToDecimal(dr["Largo"]),
+                                    Ancho = Convert.ToDecimal(dr["Ancho"]),
+                                    Topografia = dr["Topografia"].ToString(),
+                                    TipoSuelo = dr["TipoSuelo"].ToString(),
+                                    Direccion = dr["Direccion"].ToString(),
+                                    NotasAdicionales = dr["NotasAdicionales"].ToString(),
+                                    EstadoServicios = dr["EstadoServicios"].ToString(),
+                                    RiesgoInundacion = dr["RiesgoInundacion"].ToString(),
+                                    RiesgoDeslizamiento = dr["RiesgoDeslizamiento"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<PropiedadIADTO>
+                {
+                    Estado = obj != null,
+                    Data = obj,
+                    Mensaje = obj != null ? "Datos Obtenidas" : "La propiedad no fue encontrada"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<PropiedadIADTO>
+                {
+                    Estado = false,
+                    Mensaje = "Ocurrió un error: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
+
     }
 }

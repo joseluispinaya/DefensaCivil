@@ -1,4 +1,5 @@
-﻿using CapaEntidad.Responses;
+﻿using CapaEntidad.DTOs;
+using CapaEntidad.Responses;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -330,6 +331,185 @@ namespace CapaPresentacion
                 // Ahora si falla, te dirá exactamente por qué en lugar de un error genérico
                 //return "Error al consultar mapa: " + ex.Message;
                 return "error_api";
+            }
+        }
+
+        // modelo ia
+
+        public Respuesta<List<ResultadoIADTO>> GenerarRecomendacion(PropiedadIADTO informacionProp)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(OpenAIApiKey))
+                {
+                    return new Respuesta<List<ResultadoIADTO>>()
+                    {
+                        Estado = false,
+                        Data = null,
+                        Mensaje = "Modelo inteligente no disponible. Verifique la configuración."
+                    };
+                }
+
+                // MEJORA 1: Le damos un rol más amplio
+                string systemContent = @"Eres un Ingeniero Civil y Arquitecto experto en planificación estratégica e infraestructura para instituciones de Defensa Civil y Fuerzas Armadas. 
+                Tu objetivo es analizar el tamaño, zona y riesgos de un terreno para recomendar la infraestructura más adecuada de un amplio catálogo de posibilidades. Responde estrictamente en formato JSON.";
+
+                var prompt = ConstruirPrompt(informacionProp);
+
+                var requestBody = new
+                {
+                    model = "gpt-4o-mini", // Súper rápido y económico para estructurar JSON
+                    messages = new[]
+                    {
+                        new { role = "system", content = systemContent },
+                        new { role = "user", content = prompt }
+                    },
+                    temperature = 0.6, // Temperatura baja para que respete el formato y no alucine
+                    response_format = new { type = "json_object" } // Obliga a la API a responder un JSON válido
+                };
+
+                var json = JsonSerializer.Serialize(requestBody);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                using (var http = new HttpClient())
+                {
+                    http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", OpenAIApiKey);
+
+                    var response = http
+                        .PostAsync("https://api.openai.com/v1/chat/completions", content)
+                        .GetAwaiter()
+                        .GetResult();
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        var errorDetails = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                        return new Respuesta<List<ResultadoIADTO>>()
+                        {
+                            Estado = false,
+                            Data = null,
+                            Mensaje = "Error al comunicarse con el modelo inteligente: " + errorDetails
+                        };
+                    }
+
+                    var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+                    // Llamamos a tu método extractor mejorado
+                    var resultado = ExtraerResultado(responseJson);
+
+                    return new Respuesta<List<ResultadoIADTO>>()
+                    {
+                        Estado = true,
+                        Data = resultado,
+                        Mensaje = "Recomendaciones generadas correctamente"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<List<ResultadoIADTO>>()
+                {
+                    Estado = false,
+                    Data = null,
+                    Mensaje = "Ocurrió un error inesperado al generar la recomendación: " + ex.Message
+                };
+            }
+        }
+
+        private string ConstruirPrompt(PropiedadIADTO prop)
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine("Analiza las siguientes características de una propiedad de Defensa Civil y sugiere opciones de construcción estratégica:");
+            sb.AppendLine();
+
+            // Inyectamos los datos reales del DTO
+            sb.AppendLine("=== Características de la propiedad ===");
+            sb.AppendLine($"- Tipo: {prop.TipoPropiedad} en Zona {prop.Zona}");
+            sb.AppendLine($"- Dimensiones: {prop.AreaM2} m² (Largo: {prop.Largo}m x Ancho: {prop.Ancho}m)");
+            sb.AppendLine($"- Topografía: {prop.Topografia}");
+            sb.AppendLine($"- Tipo de Suelo: {prop.TipoSuelo}");
+            sb.AppendLine($"- Servicios: {prop.EstadoServicios}");
+            sb.AppendLine($"- Inundación: {prop.RiesgoInundacion}");
+            sb.AppendLine($"- Deslizamiento: {prop.RiesgoDeslizamiento}");
+
+            if (!string.IsNullOrWhiteSpace(prop.NotasAdicionales))
+                sb.AppendLine($"- Notas Adicionales: {prop.NotasAdicionales}");
+
+            sb.AppendLine();
+            sb.AppendLine("=== INSTRUCCIONES ESTRICTAS ===");
+
+            // MEJORA 3: Instrucción mucho más rica y condicionada
+            sb.AppendLine("1. Recomienda exactamente 3 opciones de infraestructura estratégicas, variadas y altamente coherentes con el tamaño (AreaM2) y la Zona del terreno.");
+            sb.AppendLine("2. Amplía tu catálogo. Considera opciones como: Oficinas administrativas, Viviendas militares, Centro de acopio, Helipuerto, Almacén de maquinaria pesada, Hospital de campaña, Cuartel logístico, Puesto de control, etc.");
+            sb.AppendLine("3. Selecciona infraestructuras lógicas (Ej: No sugieras un gran Cuartel en 300m², sugiere Oficinas. No sugieras infraestructura subterránea en zonas con riesgo de inundación).");
+            sb.AppendLine("4. Escribe una 'Justificacion' técnica detallando por qué el tamaño, el suelo, la topografía o la ubicación hacen ideal esta elección.");
+            sb.AppendLine();
+
+            // Forzamos la estructura JSON exacta con tus nuevas variables
+            sb.AppendLine("Responde ÚNICAMENTE con un JSON válido que siga EXACTAMENTE la siguiente estructura, sin texto adicional ni formato Markdown fuera del JSON:");
+            sb.AppendLine("{");
+            sb.AppendLine("  \"Recomendaciones\": [");
+            sb.AppendLine("    {");
+            sb.AppendLine("      \"TipoInfraestructura\": \"nombre de la infraestructura sugerida\",");
+            sb.AppendLine("      \"Justificacion\": \"razón técnica detallada de la elección\"");
+            sb.AppendLine("    }");
+            sb.AppendLine("  ]");
+            sb.AppendLine("}");
+
+            return sb.ToString();
+        }
+
+        private List<ResultadoIADTO> ExtraerResultado(string jsonResponse)
+        {
+            try
+            {
+                using (var doc = JsonDocument.Parse(jsonResponse))
+                {
+                    var contentString = doc.RootElement
+                        .GetProperty("choices")[0]
+                        .GetProperty("message")
+                        .GetProperty("content")
+                        .GetString();
+
+                    // Limpieza de seguridad: Quitamos las etiquetas Markdown si la IA las incluyó
+                    if (!string.IsNullOrWhiteSpace(contentString))
+                    {
+                        contentString = contentString.Trim();
+                        if (contentString.StartsWith("```json", StringComparison.OrdinalIgnoreCase))
+                        {
+                            contentString = contentString.Substring(7);
+                        }
+                        else if (contentString.StartsWith("```"))
+                        {
+                            contentString = contentString.Substring(3);
+                        }
+
+                        if (contentString.EndsWith("```"))
+                        {
+                            contentString = contentString.Substring(0, contentString.Length - 3);
+                        }
+                        contentString = contentString.Trim();
+                    }
+
+                    // Opciones flexibles
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+
+                    // PARTE CLAVE: Extraemos directamente el array "Recomendaciones" del JSON limpio
+                    using (var cleanDoc = JsonDocument.Parse(contentString))
+                    {
+                        var arrayElement = cleanDoc.RootElement.GetProperty("Recomendaciones");
+
+                        // Deserializamos solo el array a una Lista de C#
+                        return JsonSerializer.Deserialize<List<ResultadoIADTO>>(arrayElement.GetRawText(), options);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al procesar el JSON de la IA. Detalle: {ex.Message}");
             }
         }
 

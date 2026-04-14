@@ -329,7 +329,7 @@ function enviarAjaxPropieda(objeto, base64String) {
                 });
 
                 // Redireccionar al listado tras registrar con éxito
-                setTimeout(() => window.location.href = 'Inicio.aspx', 2200);
+                setTimeout(() => window.location.href = 'ListapropiedadesPage.aspx', 2200);
 
             } else {
                 mostrarAlertaZero("¡Atención!", response.d.Mensaje, response.d.Valor);

@@ -54,6 +54,16 @@ namespace CapaNegocio
             return DUsuario.GetInstance().ListaRoles();
         }
 
+        public Respuesta<List<UsuarioAccesoDTO>> ControlUsuariosIdRegional(int IdRegional)
+        {
+            return DUsuario.GetInstance().ControlUsuariosIdRegional(IdRegional);
+        }
+
+        public Respuesta<List<DetalleAccesoDTO>> HistorialAccesoUser(int IdUsuario)
+        {
+            return DUsuario.GetInstance().HistorialAccesoUser(IdUsuario);
+        }
+
         public Respuesta<EUsuarios> LoginUsuario(string Correo)
         {
             var correoPrueba = "joseluisdev@yopmail.com";

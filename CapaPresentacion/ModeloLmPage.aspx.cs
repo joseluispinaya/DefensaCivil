@@ -1,4 +1,7 @@
-﻿using CapaEntidad.Responses;
+﻿using CapaEntidad.DTOs;
+using CapaEntidad.Entidades;
+using CapaEntidad.Responses;
+using CapaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +17,38 @@ namespace CapaPresentacion
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        [WebMethod]
+        public static Respuesta<List<ResultadoIADTO>> ResultadoModeloLm(int IdPropiedad)
+        {
+            try
+            {
+                var info = NPropiedad.GetInstance().InfoPropiedad(IdPropiedad);
+
+                if (!info.Estado || info.Data == null)
+                {
+                    return new Respuesta<List<ResultadoIADTO>>
+                    {
+                        Estado = false,
+                        Data = null,
+                        Mensaje = info.Mensaje
+                    };
+                }
+
+                return HelpersIA.GetInstance().GenerarRecomendacion(info.Data);
+            }
+            catch (Exception ex)
+            {
+                // Captura cualquier error no previsto en la capa de presentación
+                return new Respuesta<List<ResultadoIADTO>> { Estado = false, Mensaje = "Ocurrió un error en el servidor: " + ex.Message };
+            }
+        }
+
+        [WebMethod]
+        public static Respuesta<PropiedadIADTO> InfoPropiedad(int IdPropiedad)
+        {
+            return NPropiedad.GetInstance().InfoPropiedad(IdPropiedad);
         }
 
         [WebMethod]

@@ -14,49 +14,23 @@
                 <div class="card-body">
                     <h5 class="mb-2">Consulta de Propiedad</h5>
                     <p class="mb-2">
-                        Puede realizar una bisqueda de la propiedad e interactuar para verificar posibles mejoras o recomendaciones
+                        Puede realizar una busqueda de la propiedad e interactuar para verificar posibles mejoras o recomendaciones
                     </p>
                     <div class="mb-3">
                         <label class="form-label">Buscar Propiedad:</label>
-                        <select class="form-control select2" data-toggle="select2">
-                            <option>Select</option>
-                            <optgroup label="Alaskan/Hawaiian Time Zone">
-                                <option value="AK">Alaska</option>
-                                <option value="HI">Hawaii</option>
-                            </optgroup>
-                            <optgroup label="Pacific Time Zone">
-                                <option value="CA">California</option>
-                                <option value="WA">Washington</option>
-                            </optgroup>
-                            <optgroup label="Mountain Time Zone">
-                                <option value="AZ">Arizona</option>
-                                <option value="CO">Colorado</option>
-                                <option value="ID">Idaho</option>
-                                <option value="WY">Wyoming</option>
-                            </optgroup>
-                            <optgroup label="Central Time Zone">
-                                <option value="AL">Alabama</option>
-                                <option value="AR">Arkansas</option>
-                                <option value="IL">Illinois</option>
-                                <option value="IA">Iowa</option>
-                                <option value="WI">Wisconsin</option>
-                            </optgroup>
-                            <optgroup label="Eastern Time Zone">
-                                <option value="CT">Connecticut</option>
-                                <option value="DE">Delaware</option>
-                                <option value="WV">West Virginia</option>
-                            </optgroup>
+                        <select id="cboBuscarPropied" class="form-control select2" style="width: 100%;">
+                            <option value="">Nro. Folio o Cod. Catastral...</option>
                         </select>
                     </div>
 
-                    <div class="mb-3">
+                    <%--<div class="mb-3">
                         <label class="form-label" for="txtConsulta">Consulta</label>
                         <textarea class="form-control" id="txtConsulta" placeholder="Ingrese su consulta" rows="5"></textarea>
-                    </div>
+                    </div>--%>
 
                     <div class="mb-2">
                         <div class="d-flex justify-content-center">
-                            <button type="button" id="btnConsultar" class="btn btn-sm btn-info me-2"><i class="ti ti-home-search me-1 fs-20"></i>Consultar</button>
+                            <button type="button" id="btnConsultar" class="btn btn-sm btn-info me-2"><i class="ti ti-home-search me-1 fs-20"></i>Reporte</button>
                             <button type="button" id="btnNuevaCons" class="btn btn-sm btn-success"><i class="ti ti-home-plus me-1 fs-20"></i>Nuevo</button>
                         </div>
                     </div>
@@ -71,27 +45,21 @@
                     <h5 class="mb-2">Descripcion</h5>
                     <%--<p class="fs-15 fw-medium mb-0 text-muted mb-1">Descripcion</p>--%>
 
-                    <p class="mb-2">
-                        Bring Axis home and watch life revolve around it. This 2-seat sofa offers exceptional
-                    durability for family rooms and casual living rooms, featuring track arms that create a clean look. Low
-                    back cushions and deep seats encourage lounging with family and friends.
-                    </p>
+                    <p id="lblDescripcionGe" class="mb-2">Esperando...</p>
 
                     <div class="border border-dashed p-2 rounded text-center">
                         <div class="row">
                             <div class="col-lg-3 col-4 border-end">
-                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Ancho : </span>54 mts</p>
+                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Ancho : </span><span id="lblAncho">Esperando...</span></p>
                             </div>
                             <div class="col-lg-3 col-4 border-end">
-                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Largo : </span>67 mts</p>
+                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Largo : </span><span id="lblLargo">Esperando...</span></p>
                             </div>
                             <div class="col-lg-3 col-4 border-end">
-                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Area M2 : </span>365 mts</p>
+                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Area : </span><span id="lblArea">Esperando...</span></p>
                             </div>
-                            <div class="col-lg-3 col-4 border-end">
-                                <p class="text-muted fw-medium fs-14 mb-0">
-                                    <span class="text-dark">Nro Folio : </span>4654sd12
-                                </p>
+                            <div class="col-lg-3 col-4">
+                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Nro Folio : </span><span id="lblNrofolio">Esperando...</span></p>
                             </div>
                         </div>
                     </div>
@@ -106,43 +74,43 @@
                                             <td class="px-0">
                                                 <p class="d-flex mb-0 align-items-center gap-1">Servicios basicos : </p>
                                             </td>
-                                            <td class="text-end text-dark fw-medium px-0">Si</td>
+                                            <td class="text-end text-dark fw-medium px-0"><span id="lblSerBasi">Esperando...</span></td>
                                         </tr>
                                         <tr>
                                             <td class="px-0">
                                                 <p class="d-flex mb-0 align-items-center gap-1">Riesgo de Inundacion : </p>
                                             </td>
-                                            <td class="text-end text-dark fw-medium px-0">No</td>
+                                            <td class="text-end text-dark fw-medium px-0"><span id="lblRiesgoInun">Esperando...</span></td>
                                         </tr>
                                         <tr>
                                             <td class="px-0">
                                                 <p class="d-flex mb-0 align-items-center gap-1">Riesgo deslizamiento : </p>
                                             </td>
-                                            <td class="text-end text-dark fw-medium px-0">No</td>
+                                            <td class="text-end text-dark fw-medium px-0"><span id="lblRiesgoDesli">Esperando...</span></td>
                                         </tr>
                                         <tr>
                                             <td class="px-0">
                                                 <p class="d-flex mb-0 align-items-center gap-1">Topografia : </p>
                                             </td>
-                                            <td class="text-end text-dark fw-medium px-0">Irregular</td>
+                                            <td class="text-end text-dark fw-medium px-0"><span id="lblTopografia">Esperando...</span></td>
                                         </tr>
                                         <tr>
                                             <td class="px-0">
                                                 <p class="d-flex mb-0 align-items-center gap-1">Tipo Suelo : </p>
                                             </td>
-                                            <td class="text-end text-dark fw-medium px-0">Arcilloso</td>
+                                            <td class="text-end text-dark fw-medium px-0"><span id="lblTipoSuelo">Esperando...</span></td>
                                         </tr>
                                         <tr>
                                             <td class="px-0">
                                                 <p class="d-flex mb-0 align-items-center gap-1">Tipo Propiedad : </p>
                                             </td>
-                                            <td class="text-end text-dark fw-medium px-0">Vivienda</td>
+                                            <td class="text-end text-dark fw-medium px-0"><span id="lblTipoPropi">Esperando...</span></td>
                                         </tr>
                                         <tr>
                                             <td class="px-0">
-                                                <p class="d-flex mb-0 align-items-center gap-1">Estado : </p>
+                                                <p class="d-flex mb-0 align-items-center gap-1">Tipo Estado : </p>
                                             </td>
-                                            <td class="text-end text-dark fw-medium px-0">Observacion</td>
+                                            <td class="text-end text-dark fw-medium px-0"><span id="lblTipoEstado">Esperando...</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -152,7 +120,8 @@
                             <h4 class="card-title text-center mt-3">Ubicacion</h4>
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="mapouter">
+                                    <div id="mapa" class="gmaps mb-3"></div>
+                                    <%--<div class="mapouter">
                                         <div class="gmap_canvas">
                                             <iframe
                                                 class="gmap_iframe gmapz rounded"
@@ -162,7 +131,7 @@
                                                 marginwidth="0"
                                                 src="https://maps.google.com/maps?q=-11.004188,-66.055628&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
                                         </div>
-                                    </div>
+                                    </div>--%>
                                 </div>
                             </div>
                         </div>
@@ -174,4 +143,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <script src="js/ConsultasPage.js?v=<%= DateTime.Now.ToString("yyyyMMddHHmmss") %>" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDF1HcfGOeusxinFBpjXsMccjQxCtxRrV4&loading=async&callback=initMap"></script>
 </asp:Content>

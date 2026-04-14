@@ -2881,8 +2881,12 @@
     <Content Include="ConsultasPage.aspx" />
     <Content Include="Imagenes\fotop4.jpg" />
     <Content Include="Imagenes\iconlo.png" />
+    <Content Include="Imagenes\logoMinisterio.png" />
+    <Content Include="Imagenes\selectimg.png" />
     <Content Include="Imagenes\sinimagen.png" />
     <Content Include="Inicio.aspx" />
+    <Content Include="js\ConsultasPage.js" />
+    <Content Include="js\InicioPage.js" />
     <Content Include="js\ListaPropiedadesPage.js" />
     <Content Include="js\Login.js" />
     <Content Include="js\Masterpa.js" />

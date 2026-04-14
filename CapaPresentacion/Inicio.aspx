@@ -91,15 +91,17 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card" id="loadinzer">
                 <div class="d-flex card-header justify-content-between align-items-center border-bottom border-dashed">
-                    <h4 class="header-title">Categorias Registradas</h4>
+                    <h4 class="header-title">Propiedades Registradas</h4>
                     <button type="button" id="btnNuevore" class="btn btn-info btn-sm">Agregar <i class="ti ti-plus ms-1"></i></button>
                     <!-- <a href="javascript:void(0);" class="btn btn-sm btn-secondary">Add Brand <i class="ti ti-plus ms-1"></i></a> -->
                 </div>
 
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div id="mapa" class="gmaps" style="height: 350px;"></div>
+
+                    <%--<div class="table-responsive">
                         <table class="table table-striped table-sm" id="tbCategorias" cellspacing="0" style="width: 100%">
                             <thead>
                                 <tr>
@@ -114,11 +116,13 @@
                             <tbody>
                             </tbody>
                         </table>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <script src="js/InicioPage.js?v=<%= DateTime.Now.ToString("yyyyMMddHHmmss") %>" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDF1HcfGOeusxinFBpjXsMccjQxCtxRrV4&loading=async&callback=initMap"></script>
 </asp:Content>

@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\DetalleAccesoDTO.cs" />
     <Compile Include="DTOs\PropiedadesCoordeDTO.cs" />
     <Compile Include="DTOs\PropiedadesDTO.cs" />
+    <Compile Include="DTOs\PropiedadIADTO.cs" />
     <Compile Include="DTOs\RegionalesDTO.cs" />
+    <Compile Include="DTOs\ResultadoIADTO.cs" />
+    <Compile Include="DTOs\UsuarioAccesoDTO.cs" />
     <Compile Include="DTOs\UsuarioDTO.cs" />
     <Compile Include="DTOs\UsuarioLogDTO.cs" />
     <Compile Include="Entidades\EDepartamento.cs" />
