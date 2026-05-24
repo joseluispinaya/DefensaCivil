@@ -12,7 +12,28 @@ let idEditarMuni = 0;
 $(document).ready(function () {
     listaDepartamentos();
     cargarTodosLosDepartamentos();
+    //departamentosApi();
 });
+
+function departamentosApi() {
+    $.ajax({
+        type: "GET",
+        url: "https://localhost:44306/api/departamentos/lista",
+        dataType: "json",
+        success: function (response) {
+            if (response.Estado) {
+                console.log(response.Data);
+                mostrarAlertaZero("Mensaje", response.Mensaje, "success");
+            } else {
+                mostrarAlertaZero("Mensaje", response.Mensaje, "warning");
+            }
+            
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
 
 function cargarTodosLosDepartamentos() {
     // 1. Agrupamos TODOS los IDs de los selects que necesitan Departamentos separados por coma
@@ -51,6 +72,7 @@ function cargarTodosLosDepartamentos() {
 }
 
 // Departamento
+
 function listaDepartamentos() {
     if ($.fn.DataTable.isDataTable("#tbDeparta")) {
         $("#tbDeparta").DataTable().destroy();
