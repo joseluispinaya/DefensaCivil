@@ -29,9 +29,9 @@
                             <%--<button type="button" id="btnGenerarPruebas" class="btn btn-sm btn-danger me-2">
                                 <i class="ti ti-map-pin fs-16 align-middle me-1"></i>
                             </button>--%>
-                            <button type="button" id="btnReporte" class="btn btn-sm btn-success">
+                            <%--<button type="button" id="btnReporte" class="btn btn-sm btn-success">
                                 <i class="ti ti-home-search fs-16 align-middle me-1"></i>Reporte
-                            </button>
+                            </button>--%>
                         </div>
                     </div>
 

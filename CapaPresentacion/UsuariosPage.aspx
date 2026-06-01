@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="d-flex card-header justify-content-between align-items-center border-bottom border-dashed">
                     <h4 class="header-title">Usuarios Registrados</h4>
-                    <button type="button" id="btnNuevore" class="btn btn-info btn-sm">Agregar <i class="ti ti-user-circle ms-1 fs-20"></i></button>
+                    <%--<button type="button" id="btnNuevore" class="btn btn-info btn-sm">Agregar <i class="ti ti-user-circle ms-1 fs-20"></i></button>--%>
                 </div>
 
                 <div class="card-body">

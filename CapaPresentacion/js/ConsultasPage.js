@@ -92,41 +92,89 @@ function formatoResultados(data) {
 }
 
 // 4. Evento al SELECCIONAR
+
 $("#cboBuscarPropied").on("select2:select", function (e) {
     const data = e.params.data.dataCompleta;
-    //$("#txtIdTutor").val(data.id);
-    $("#lblDescripcionGe").text(data.DescripcionGen);
-    $("#lblAncho").text(data.Ancho + " Mts");
-    $("#lblLargo").text(data.Largo + " Mts");
-    $("#lblArea").text(data.AreaM2 + " m²");
-    $("#lblNrofolio").text(data.NroFolio);
 
-    //const url = data.ServiciosBas ? "Si" : "No";
-    //$("#cboEstado").val(data.Estado ? 1 : 0);
+    // --- MANEJO INTELIGENTE DEL DOCUMENTO PDF ---
+    if (data.DocumentacionUrl) {
+        // Si hay PDF, ocultamos el mensaje vacío y mostramos el botón rojo
+        $("#estadoVacioPdf").addClass("d-none");
+        $("#btnVerPdf").attr("href", data.DocumentacionUrl).removeClass("d-none");
+    } else {
+        // Si no hay PDF, ocultamos el botón y cambiamos el texto del mensaje vacío
+        $("#btnVerPdf").addClass("d-none").attr("href", "#");
+        $("#estadoVacioPdf").removeClass("d-none");
+        $("#estadoVacioPdf span").text("Esta propiedad no cuenta con documento PDF adjunto.");
+    }
+
+    // --- ASIGNACIÓN DE DATOS ---
+    $("#lblDescripcionGe").text(data.DescripcionGen || "Sin descripción");
+    $("#lblAncho").text((data.Ancho || "0") + " Mts");
+    $("#lblLargo").text((data.Largo || "0") + " Mts");
+    $("#lblArea").text((data.AreaM2 || "0") + " m²");
+    $("#lblNrofolio").text(data.NroFolio || "N/A");
 
     $("#lblSerBasi").text(data.ServiciosBas ? "Sí" : "No");
     $("#lblRiesgoInun").text(data.RiesgoInundacion ? "Sí" : "No");
     $("#lblRiesgoDesli").text(data.RiesgoDeslizamiento ? "Sí" : "No");
 
-    $("#lblTopografia").text(data.Topografia);
-    $("#lblTipoSuelo").text(data.TipoSuelo);
-    $("#lblTipoPropi").text(data.TipoPropiedad);
-    $("#lblTipoEstado").text(data.EstadoLegal);
+    $("#lblTopografia").text(data.Topografia || "N/A");
+    $("#lblTipoSuelo").text(data.TipoSuelo || "N/A");
+    $("#lblTipoPropi").text(data.TipoPropiedad || "N/A");
+    $("#lblTipoEstado").text(data.EstadoLegal || "N/A");
 
-    // --- LECTURA DE COORDENADAS ---
+    // --- LECTURA DE COORDENADAS MAPA ---
     let lat = parseFloat(data.Latitud);
     let lng = parseFloat(data.Longitud);
 
-    map.setCenter({ lat, lng });
-    map.setZoom(17);
+    // Verificamos que las coordenadas sean válidas antes de mover el mapa
+    if (!isNaN(lat) && !isNaN(lng)) {
+        map.setCenter({ lat, lng });
+        map.setZoom(17);
 
-    new google.maps.marker.AdvancedMarkerElement({
-        map: map,
-        position: { lat, lng },
-        title: "punto de ubicación"
-    })
+        new google.maps.marker.AdvancedMarkerElement({
+            map: map,
+            position: { lat, lng },
+            title: "Punto de ubicación"
+        });
+    }
 
-    $("#cboBuscarPropied").val(null).trigger("change");
+    // Limpiamos el buscador después de seleccionar (opcional)
+    // $("#cboBuscarPropied").val(null).trigger("change");
 });
+
+//$("#cboBuscarPropied").on("select2:select", function (e) {
+//    const data = e.params.data.dataCompleta;
+//    $("#verPdf").attr("src", data.DocumentacionUrl || "DocumetPdf/sinPdf.pdf");
+//    $("#lblDescripcionGe").text(data.DescripcionGen);
+//    $("#lblAncho").text(data.Ancho + " Mts");
+//    $("#lblLargo").text(data.Largo + " Mts");
+//    $("#lblArea").text(data.AreaM2 + " m²");
+//    $("#lblNrofolio").text(data.NroFolio);
+
+//    $("#lblSerBasi").text(data.ServiciosBas ? "Sí" : "No");
+//    $("#lblRiesgoInun").text(data.RiesgoInundacion ? "Sí" : "No");
+//    $("#lblRiesgoDesli").text(data.RiesgoDeslizamiento ? "Sí" : "No");
+
+//    $("#lblTopografia").text(data.Topografia);
+//    $("#lblTipoSuelo").text(data.TipoSuelo);
+//    $("#lblTipoPropi").text(data.TipoPropiedad);
+//    $("#lblTipoEstado").text(data.EstadoLegal);
+
+//    let lat = parseFloat(data.Latitud);
+//    let lng = parseFloat(data.Longitud);
+
+//    map.setCenter({ lat, lng });
+//    map.setZoom(17);
+
+//    new google.maps.marker.AdvancedMarkerElement({
+//        map: map,
+//        position: { lat, lng },
+//        title: "punto de ubicación"
+//    })
+
+//    $("#cboBuscarPropied").val(null).trigger("change");
+//});
 
 // Configuración del Select2 (AJAX)

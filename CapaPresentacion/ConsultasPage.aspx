@@ -9,138 +9,126 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="row">
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="mb-2">Consulta de Propiedad</h5>
-                    <p class="mb-2">
-                        Puede realizar una busqueda de la propiedad e interactuar para verificar posibles mejoras o recomendaciones
-                    </p>
-                    <div class="mb-3">
-                        <label class="form-label">Buscar Propiedad:</label>
-                        <select id="cboBuscarPropied" class="form-control select2" style="width: 100%;">
-                            <option value="">Nro. Folio o Cod. Catastral...</option>
-                        </select>
-                    </div>
-
-                    <%--<div class="mb-3">
-                        <label class="form-label" for="txtConsulta">Consulta</label>
-                        <textarea class="form-control" id="txtConsulta" placeholder="Ingrese su consulta" rows="5"></textarea>
-                    </div>--%>
-
-                    <div class="mb-2">
-                        <div class="d-flex justify-content-center">
-                            <button type="button" id="btnConsultar" class="btn btn-sm btn-info me-2"><i class="ti ti-home-search me-1 fs-20"></i>Reporte</button>
-                            <button type="button" id="btnNuevaCons" class="btn btn-sm btn-success"><i class="ti ti-home-plus me-1 fs-20"></i>Nuevo</button>
-                        </div>
-                    </div>
+    <div class="col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="header-title mb-2"><i class="ri-search-line me-1 text-primary"></i> Consulta de Propiedad</h4>
+                <p class="text-muted fs-13 mb-3">
+                    Realice la búsqueda ingresando el Nro. de Folio o Código Catastral.
+                </p>
+                
+                <div class="mb-3">
+                    <select id="cboBuscarPropied" class="form-control select2" style="width: 100%;">
+                        <option value="">Buscar propiedad...</option>
+                    </select>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-8">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="text-dark fw-medium text-center">Detalle General de la Propiedad</h4>
 
-                    <h5 class="mb-2">Descripcion</h5>
-                    <%--<p class="fs-15 fw-medium mb-0 text-muted mb-1">Descripcion</p>--%>
+                <hr class="border-light">
 
-                    <p id="lblDescripcionGe" class="mb-2">Esperando...</p>
-
-                    <div class="border border-dashed p-2 rounded text-center">
-                        <div class="row">
-                            <div class="col-lg-3 col-4 border-end">
-                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Ancho : </span><span id="lblAncho">Esperando...</span></p>
-                            </div>
-                            <div class="col-lg-3 col-4 border-end">
-                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Largo : </span><span id="lblLargo">Esperando...</span></p>
-                            </div>
-                            <div class="col-lg-3 col-4 border-end">
-                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Area : </span><span id="lblArea">Esperando...</span></p>
-                            </div>
-                            <div class="col-lg-3 col-4">
-                                <p class="text-muted fw-medium fs-14 mb-0"><span class="text-dark">Nro Folio : </span><span id="lblNrofolio">Esperando...</span></p>
-                            </div>
-                        </div>
+                <h4 class="header-title mb-3"><i class="ri-folder-info-line me-1 text-primary"></i> Documento Legal</h4>
+                
+                <div class="border border-dashed rounded p-4 text-center bg-light" id="boxDocumento">
+                    
+                    <div id="estadoVacioPdf">
+                        <i class="ri-file-search-line fs-1 d-block text-muted opacity-50 mb-2"></i>
+                        <span class="text-muted fs-13">Seleccione una propiedad para visualizar su documentación.</span>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <h4 class="card-title mt-3">Informacion adicional</h4>
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <tbody>
-                                        <tr>
-                                            <td class="px-0">
-                                                <p class="d-flex mb-0 align-items-center gap-1">Servicios basicos : </p>
-                                            </td>
-                                            <td class="text-end text-dark fw-medium px-0"><span id="lblSerBasi">Esperando...</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-0">
-                                                <p class="d-flex mb-0 align-items-center gap-1">Riesgo de Inundacion : </p>
-                                            </td>
-                                            <td class="text-end text-dark fw-medium px-0"><span id="lblRiesgoInun">Esperando...</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-0">
-                                                <p class="d-flex mb-0 align-items-center gap-1">Riesgo deslizamiento : </p>
-                                            </td>
-                                            <td class="text-end text-dark fw-medium px-0"><span id="lblRiesgoDesli">Esperando...</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-0">
-                                                <p class="d-flex mb-0 align-items-center gap-1">Topografia : </p>
-                                            </td>
-                                            <td class="text-end text-dark fw-medium px-0"><span id="lblTopografia">Esperando...</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-0">
-                                                <p class="d-flex mb-0 align-items-center gap-1">Tipo Suelo : </p>
-                                            </td>
-                                            <td class="text-end text-dark fw-medium px-0"><span id="lblTipoSuelo">Esperando...</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-0">
-                                                <p class="d-flex mb-0 align-items-center gap-1">Tipo Propiedad : </p>
-                                            </td>
-                                            <td class="text-end text-dark fw-medium px-0"><span id="lblTipoPropi">Esperando...</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-0">
-                                                <p class="d-flex mb-0 align-items-center gap-1">Tipo Estado : </p>
-                                            </td>
-                                            <td class="text-end text-dark fw-medium px-0"><span id="lblTipoEstado">Esperando...</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <h4 class="card-title text-center mt-3">Ubicacion</h4>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div id="mapa" class="gmaps mb-3"></div>
-                                    <%--<div class="mapouter">
-                                        <div class="gmap_canvas">
-                                            <iframe
-                                                class="gmap_iframe gmapz rounded"
-                                                frameborder="0"
-                                                scrolling="no"
-                                                marginheight="0"
-                                                marginwidth="0"
-                                                src="https://maps.google.com/maps?q=-11.004188,-66.055628&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
-                                        </div>
-                                    </div>--%>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#" id="btnVerPdf" target="_blank" class="btn btn-danger w-100 d-none shadow-sm fw-medium">
+                        <i class="ri-file-pdf-2-fill me-1 fs-18 align-middle"></i> Ver Documento PDF
+                    </a>
 
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="text-dark fw-bold text-center mb-3">Detalle General de la Propiedad</h4>
+
+                <h5 class="font-15 fw-semibold mb-2">Descripción</h5>
+                <p id="lblDescripcionGe" class="text-muted bg-light p-2 rounded fs-14 border mb-3">---</p>
+
+                <div class="row g-2 text-center mb-3">
+                    <div class="col-6 col-md-3">
+                        <div class="border rounded p-2 bg-light">
+                            <span class="d-block text-muted fs-12 text-uppercase fw-semibold">Ancho</span>
+                            <span id="lblAncho" class="text-dark fw-bold fs-15">---</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="border rounded p-2 bg-light">
+                            <span class="d-block text-muted fs-12 text-uppercase fw-semibold">Largo</span>
+                            <span id="lblLargo" class="text-dark fw-bold fs-15">---</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="border rounded p-2 bg-light">
+                            <span class="d-block text-muted fs-12 text-uppercase fw-semibold">Área Total</span>
+                            <span id="lblArea" class="text-primary fw-bold fs-15">---</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="border rounded p-2 bg-light">
+                            <span class="d-block text-muted fs-12 text-uppercase fw-semibold">Nro. Folio</span>
+                            <span id="lblNrofolio" class="text-dark fw-bold fs-15">---</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-5 mb-4 mb-lg-0">
+                        <h4 class="header-title mt-2 mb-3">Información Adicional</h4>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-borderless mb-0 fs-14">
+                                <tbody>
+                                    <tr class="border-bottom border-light">
+                                        <td class="text-muted"><i class="ri-water-flash-line me-1"></i>Servicios Básicos</td>
+                                        <td class="text-end text-dark fw-semibold"><span id="lblSerBasi">---</span></td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="text-muted"><i class="ri-flood-line me-1"></i>Riesgo Inundación</td>
+                                        <td class="text-end text-dark fw-semibold"><span id="lblRiesgoInun">---</span></td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="text-muted"><i class="ri-earthquake-line me-1"></i>Riesgo Deslizamiento</td>
+                                        <td class="text-end text-dark fw-semibold"><span id="lblRiesgoDesli">---</span></td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="text-muted"><i class="ri-landscape-line me-1"></i>Topografía</td>
+                                        <td class="text-end text-dark fw-semibold"><span id="lblTopografia">---</span></td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="text-muted"><i class="ri-seedling-line me-1"></i>Tipo Suelo</td>
+                                        <td class="text-end text-dark fw-semibold"><span id="lblTipoSuelo">---</span></td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="text-muted"><i class="ri-building-4-line me-1"></i>Tipo Propiedad</td>
+                                        <td class="text-end text-dark fw-semibold"><span id="lblTipoPropi">---</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted"><i class="ri-shield-check-line me-1"></i>Estado Legal</td>
+                                        <td class="text-end text-dark fw-semibold"><span id="lblTipoEstado">---</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <h4 class="header-title text-center mt-2 mb-3">Ubicación Geográfica</h4>
+                        <div class="border rounded p-1">
+                            <div id="mapa" class="gmaps" style="height: 250px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
     <script src="js/ConsultasPage.js?v=<%= DateTime.Now.ToString("yyyyMMddHHmmss") %>" type="text/javascript"></script>

@@ -47,4 +47,53 @@ function mostrarAlertaZero(titulo, mensaje, icono) {
     });
 }
 
+$(document).ready(function () {
+
+    const usuarioLog = sessionStorage.getItem('usuaAdmin');
+
+    if (!usuarioLog) {
+        window.location.replace('../Login.aspx');
+        return;
+    }
+
+    try {
+        const usua = JSON.parse(usuarioLog);
+        // mostrar la imagen y nombre del usuairo 
+
+        $("#imgAdmins").attr("src", usua.ImagenUser || "/Imagenes/sinimagen.png");
+        $("#txtApellidosAdm").text(usua.Apellidos);
+
+    } catch (error) {
+        console.error("Error leyendo sesión", error);
+        sessionStorage.clear();
+        window.location.replace('../Login.aspx');
+    }
+
+});
+
+$('#salirsis').on('click', function (e) {
+    e.preventDefault();
+
+    // Opcional: Preguntar antes de salir con SweetAlert
+    Swal.fire({
+        title: '¿Cerrar Sesión?',
+        text: "Saldrás del sistema",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, salir',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            EjecutarCierreSesion();
+        }
+    })
+});
+
+function EjecutarCierreSesion() {
+    sessionStorage.clear();
+    window.location.replace('../Login.aspx');
+}
+
 // fin

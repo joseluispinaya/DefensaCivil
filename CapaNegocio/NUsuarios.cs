@@ -66,7 +66,7 @@ namespace CapaNegocio
 
         public Respuesta<EUsuarios> LoginUsuario(string Correo)
         {
-            var correoPrueba = "joseluisdev@yopmail.com";
+            var correoPrueba = "mamfreddev@yopmail.com";
 
             if (correoPrueba.ToLower() != Correo.Trim().ToLower())
             {
@@ -82,14 +82,14 @@ namespace CapaNegocio
             EUsuarios obj = new EUsuarios
             {
                 IdUsuario = 1,
-                Nombres = "Jose Dev",
-                Apellidos = "Pinaya Seo",
+                Nombres = "Mamfred",
+                Apellidos = "Terraza Paz",
                 NroCi = "32547854",
-                Correo = "joseluisdev@yopmail.com",
+                Correo = "mamfreddev@yopmail.com",
                 Celular = "73999748",
                 ClaveHash = "123456789",
                 ImagenUser = "/Imagenes/fotop4.jpg",
-                Cargo = "Jefe de carrera",
+                Cargo = "Administrador",
                 IdRol = 2,
                 Estado = true
             };

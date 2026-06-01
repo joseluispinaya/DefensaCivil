@@ -228,7 +228,7 @@
                                                 <div class="mb-2">
                                                     <div class="d-flex justify-content-center gap-2">
                                                         <button type="button" id="btnGuardar" class="btn btn-success gap-1"><i class="ti ti-device-floppy fs-16"></i>Registrar</button>
-                                                        <button type="button" id="btnImprimirr" class="btn btn-primary gap-1"><i class="ti ti-printer fs-16"></i>Imprimir</button>
+                                                        <%--<button type="button" id="btnImprimirr" class="btn btn-primary gap-1"><i class="ti ti-printer fs-16"></i>Imprimir</button>--%>
                                                     </div>
                                                 </div>
                                             </div>
@@ -251,7 +251,7 @@
                                     <div class="d-flex flex-wrap gap-2">
                                         <div class="previous">
                                             <a href="javascript:void(0);" class="btn btn-primary">
-                                                <i class="bx bx-left-arrow-alt me-2"></i>Back To Previous
+                                                <i class="bx bx-left-arrow-alt me-2"></i>Volver al anterior
                                             </a>
                                         </div>
                                         <div class="next">

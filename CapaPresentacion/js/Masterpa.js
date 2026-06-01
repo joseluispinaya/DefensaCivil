@@ -63,6 +63,18 @@ $(document).ready(function () {
         $("#imgAdmins").attr("src", usua.FotoUrl || "Imagenes/sinimagen.png");
         $("#txtApellidosAdm").text(usua.Apellidos);
 
+        const rolUser = usua.IdRol;
+
+        // Oculta todo al inicio
+        $(".menu-adminz").hide();
+
+        // Mostrar u ocultar elementos del menú según el rol del usuario
+        if (rolUser === 1) { // Rol de Administrador
+            $(".menu-adminz").show();
+        } else {
+            $(".menu-adminz").hide();
+        }
+
         // Iniciar el temporizador de inactividad
         //iniciarTemporizadorInactividad();
 

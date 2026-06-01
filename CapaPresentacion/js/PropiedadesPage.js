@@ -126,6 +126,30 @@ function cargarEstadoPropied() {
     });
 }
 
+// validacion de datos
+$.fn.inputFilter = function (inputFilter) {
+    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function (e) { // Captura el evento como 'e'
+        if (inputFilter(this.value) || e.key === "Backspace" || e.key === " ") { // se usa 'e' en lugar de 'event'
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+        } else if (this.hasOwnProperty("oldValue")) {
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+        } else {
+            this.value = "";
+        }
+    });
+};
+
+$("#txtTopografia").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
+
+$("#txtTipoSuelo").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
+
 const TAMANO_MAXIMO = 8 * 1024 * 1024; // 4 MB en bytes
 
 function mostrarPdfSeleccionada(input) {

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="row text-center">
+    <%--<div class="row text-center">
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
@@ -22,7 +22,6 @@
                 </div>
             </div>
         </div>
-        <!-- end col -->
 
         <div class="col-md-3">
             <div class="card">
@@ -43,7 +42,6 @@
                 </div>
             </div>
         </div>
-        <!-- end col -->
 
         <div class="col-md-3">
             <div class="card">
@@ -64,7 +62,6 @@
                 </div>
             </div>
         </div>
-        <!-- end col -->
 
         <div class="col-md-3">
             <div class="card">
@@ -85,16 +82,14 @@
                 </div>
             </div>
         </div>
-        <!-- end col -->
-    </div>
-    <!-- end row -->
+    </div>--%>
 
     <div class="row">
         <div class="col-md-12">
             <div class="card" id="loadinzer">
                 <div class="d-flex card-header justify-content-between align-items-center border-bottom border-dashed">
                     <h4 class="header-title">Propiedades Registradas</h4>
-                    <button type="button" id="btnNuevore" class="btn btn-info btn-sm">Agregar <i class="ti ti-plus ms-1"></i></button>
+                    <%--<button type="button" id="btnNuevore" class="btn btn-info btn-sm">Agregar <i class="ti ti-plus ms-1"></i></button>--%>
                     <!-- <a href="javascript:void(0);" class="btn btn-sm btn-secondary">Add Brand <i class="ti ti-plus ms-1"></i></a> -->
                 </div>
 

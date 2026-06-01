@@ -63,7 +63,7 @@
                         <i class="ti ti-menu-deep fs-22"></i>
                     </button>
 
-                    <div class="topbar-item d-none d-md-flex">
+                    <%--<div class="topbar-item d-none d-md-flex">
                         <button class="topbar-link btn btn-outline-primary btn-icon" type="button">
                             <i class="ti ti-brand-facebook fs-22"></i>
                         </button>
@@ -73,7 +73,7 @@
                         <button class="topbar-link btn btn-outline-primary btn-icon" type="button">
                             <i class="ti ti-brand-whatsapp fs-22"></i>
                         </button>
-                    </div>
+                    </div>--%>
 
                 </div>
 
@@ -109,17 +109,15 @@
                                     <h6 class="text-overflow m-0">Bienvenido !</h6>
                                 </div>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
+                                <%--<a href="javascript:void(0);" class="dropdown-item">
                                     <i class="ti ti-user-hexagon me-1 fs-17 align-middle"></i>
                                     <span class="align-middle">Mi Perfil</span>
                                 </a>
 
-                                <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
                                     <i class="ti ti-lifebuoy me-1 fs-17 align-middle"></i>
                                     <span class="align-middle">Soporte</span>
-                                </a>
+                                </a>--%>
 
                                 <div class="dropdown-divider"></div>
 
@@ -162,7 +160,7 @@
                                 </div>
                             </li>--%>
 
-                            <li class="nav-item dropdown hover-dropdown">
+                            <li class="nav-item dropdown hover-dropdown menu-adminz">
                                 <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-usuarios" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="menu-icon"><i class="ti ti-user-circle"></i></span>
@@ -170,8 +168,8 @@
                                     <div class="menu-arrow"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-usuarios">
-                                    <a href="UsuariosPage.aspx" class="dropdown-item">Registros</a>
-                                    <a href="#" class="dropdown-item">Control Acceso</a>
+                                    <a href="UsuariosPage.aspx" class="dropdown-item">Control</a>
+                                    <%--<a href="#" class="dropdown-item">Control Acceso</a>--%>
                                 </div>
                             </li>
 

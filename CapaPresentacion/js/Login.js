@@ -55,16 +55,16 @@ $(document).ready(function () {
         let captchaInput = $('#inputCaptcha').val().trim();
         let captchaGenerado = $('#muestracapchap').text();
 
-        //if (captchaInput !== captchaGenerado) {
-        //    ToastLogin.fire({
-        //        icon: 'error',
-        //        title: 'El código de seguridad no coincide. Intente nuevamente.'
-        //    });
-        //    show();
-        //    $('#inputCaptcha').val('').focus();
-        //    btnSubmit.prop('disabled', false);
-        //    return;
-        //}
+        if (captchaInput !== captchaGenerado) {
+            ToastLogin.fire({
+                icon: 'error',
+                title: 'El código de seguridad no coincide. Intente nuevamente.'
+            });
+            show();
+            $('#inputCaptcha').val('').focus();
+            btnSubmit.prop('disabled', false);
+            return;
+        }
 
         $.LoadingOverlay("show", {
             image: "",

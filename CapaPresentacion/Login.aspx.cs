@@ -157,7 +157,7 @@ namespace CapaPresentacion
 
         private static bool ValidarSuperAdmin(string correo)
         {
-            var correoPrueba = "joseluisdev@yopmail.com";
+            var correoPrueba = "mamfreddev@yopmail.com";
 
             if (correoPrueba.ToLower() != correo.Trim().ToLower())
             {

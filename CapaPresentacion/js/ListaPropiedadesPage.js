@@ -85,22 +85,21 @@ function listaPropiedadesNew() {
                         ? '<span class="badge bg-success">Activo</span>'
                         : '<span class="badge bg-danger">Inactivo</span>';
                 }
-            },
-            {
-                "data": null,
-                "orderable": false,
-                "searchable": false,
-                "className": "text-center",
-                render: function (data, type, row) {
-
-                    // --- BOTONES TRADICIONALES --- (Usamos btn-outline para que no sature la vista)
-                    let btnEdit = `<button class="btn btn-outline-warning btn-editar btn-sm me-1" title="Editar"><i class="ti ti-pencil"></i></button>`;
-                    let btnView = `<button class="btn btn-outline-info btn-detalle btn-sm me-1" title="Ver Detalles"><i class="ti ti-eye"></i></button>`;
-                    let btnDel = `<button class="btn btn-outline-danger btn-eliminar btn-sm" title="Eliminar"><i class="ti ti-trash"></i></button>`;
-
-                    return btnEdit + btnView + btnDel;
-                }
             }
+            //{
+            //    "data": null,
+            //    "orderable": false,
+            //    "searchable": false,
+            //    "className": "text-center",
+            //    render: function (data, type, row) {
+
+            //        let btnEdit = `<button class="btn btn-outline-warning btn-editar btn-sm me-1" title="Editar"><i class="ti ti-pencil"></i></button>`;
+            //        let btnView = `<button class="btn btn-outline-info btn-detalle btn-sm me-1" title="Ver Detalles"><i class="ti ti-eye"></i></button>`;
+            //        let btnDel = `<button class="btn btn-outline-danger btn-eliminar btn-sm" title="Eliminar"><i class="ti ti-trash"></i></button>`;
+
+            //        return btnEdit + btnView + btnDel;
+            //    }
+            //}
         ],
         "order": [[6, "desc"]], // Ordenar por la columna de FechaRegistro (índice 6 visible)
         "language": {
@@ -108,6 +107,11 @@ function listaPropiedadesNew() {
         }
     });
 }
+
+$("#btnNuevaPropiedad").on("click", function () {
+
+    window.location.href = 'PropiedadesPage.aspx';
+})
 
 function listaPropiedades() {
 

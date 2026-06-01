@@ -15,6 +15,33 @@ $(document).ready(function () {
     //departamentosApi();
 });
 
+// validacion de datos
+$.fn.inputFilter = function (inputFilter) {
+    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function (e) { // Captura el evento como 'e'
+        if (inputFilter(this.value) || e.key === "Backspace" || e.key === " ") { // se usa 'e' en lugar de 'event'
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+        } else if (this.hasOwnProperty("oldValue")) {
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+        } else {
+            this.value = "";
+        }
+    });
+};
+
+$("#txtNombreDe").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
+
+$("#txtNombreProvi").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
+
+$("#txtNombreMunicipio").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
 function departamentosApi() {
     $.ajax({
         type: "GET",

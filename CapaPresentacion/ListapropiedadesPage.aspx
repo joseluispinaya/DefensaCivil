@@ -27,7 +27,7 @@
                                 <th>Zona</th>
                                 <th>Fecha Reg.</th>
                                 <th class="text-center">Estado</th>
-                                <th class="text-center">Opciones</th>
+                                <%--<th class="text-center">Opciones</th>--%>
                             </tr>
                         </thead>
                         <tbody>
