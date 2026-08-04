@@ -58,7 +58,7 @@
                             <label class="form-label text-light" for="inputCorreo">Correo Electrónico o CI</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-custom-darker border-secondary border-opacity-25 text-muted"><i class="ti ti-user fs-18"></i></span>
-                                <input type="text" id="inputCorreo" class="form-control input-dark" placeholder="Ej: 12345678" required autocomplete="nope">
+                                <input type="text" id="inputCorreo" class="form-control input-dark" placeholder="Ej: 12345678" required autocomplete="nope" value="luispacod@yopmail.com">
                             </div>
                         </div>
 
@@ -69,7 +69,7 @@
                             </div>
                             <div class="input-group">
                                 <span class="input-group-text bg-custom-darker border-secondary border-opacity-25 text-muted"><i class="ti ti-lock fs-18"></i></span>
-                                <input type="password" id="inputPassword" class="form-control input-dark" placeholder="••••••••" required autocomplete="new-password">
+                                <input type="password" id="inputPassword" class="form-control input-dark" placeholder="••••••••" required autocomplete="new-password" value="76453231">
                             </div>
                         </div>
 

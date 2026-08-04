@@ -43,12 +43,12 @@
                     <!-- Brand Logo -->
                     <a href="#" class="logo">
                         <span class="logo-light">
-                            <span class="logo-lg"><img src="assets/images/logoL.png" alt="logo"></span>
+                            <span class="logo-lg"><img src="assets/images/logodosn.png" alt="logo"></span>
                             <span class="logo-sm"><img src="assets/images/logo-sm.png" alt="small logo"></span>
                         </span>
 
                         <span class="logo-dark">
-                            <span class="logo-lg"><img src="assets/images/logoD.png" alt="dark logo"></span>
+                            <span class="logo-lg"><img src="assets/images/logo-darkdos.png" alt="dark logo"></span>
                             <span class="logo-sm"><img src="assets/images/logo-sm.png" alt="small logo"></span>
                         </span>
                     </a>
@@ -147,18 +147,52 @@
                                 </a>
                             </li>
 
-                            <%--<li class="nav-item dropdown hover-dropdown">
-                                <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-apps" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="menu-icon"><i class="ti ti-air-balloon"></i></span>
-                                    <span class="menu-text">Ubicaciones</span>
+                            <li class="nav-item dropdown hover-dropdown">
+                                <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-charts" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="menu-icon"><i class="ti ti-home"></i></span>
+                                    <span class="menu-text">Propiedades</span>
                                     <div class="menu-arrow"></div>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-apps">
-                                    <a href="UbicacionPage.aspx" class="dropdown-item">Registros</a>
-                                    <a href="#" class="dropdown-item">Calendar</a>
-                                    <a href="#" class="dropdown-item">Email</a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-charts">
+                                    <%--<a href="PageRegistroPropiedad.aspx" class="dropdown-item">Registros Dos</a>--%>
+                                    <a href="PropiedadesPage.aspx" class="dropdown-item">Registros</a>
+                                    <a href="ListapropiedadesPage.aspx" class="dropdown-item">Lista propiedades</a>
+                                    <a href="ConsultasPage.aspx" class="dropdown-item">Consultas</a>
+                                </div>
+                            </li>
+
+                            <%--<li class="nav-item dropdown hover-dropdown">
+                                <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-layouts" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="menu-icon"><i class="ti ti-layout"></i></span>
+                                    <span class="menu-text">Georreferencia</span>
+                                    <div class="menu-arrow"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-layouts">
+                                    <a href="UbicacionPage.aspx" class="dropdown-item">Iniciar Geo</a>
+                                    <a href="ModeloLmPage.aspx" class="dropdown-item">Asistente</a>
                                 </div>
                             </li>--%>
+
+                            <li class="nav-item dropdown hover-dropdown">
+                                <a class="nav-link" href="UbicacionPage.aspx">
+                                    <span class="menu-icon"><i class="ti ti-map-2"></i></span>
+                                    <span class="menu-text">Georreferencia </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown hover-dropdown">
+                                <a class="nav-link" href="ChatModelIA.aspx">
+                                    <span class="menu-icon"><i class="ti ti-message-filled"></i></span>
+                                    <span class="menu-text">Chat IA </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown hover-dropdown menu-adminz">
+                                <a class="nav-link" href="ModeloLmPage.aspx">
+                                    <span class="menu-icon"><i class="ti ti-brain"></i></span>
+                                    <span class="menu-text">Asistente </span>
+                                </a>
+                            </li>
 
                             <li class="nav-item dropdown hover-dropdown menu-adminz">
                                 <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-usuarios" role="button"
@@ -169,35 +203,9 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-usuarios">
                                     <a href="UsuariosPage.aspx" class="dropdown-item">Control</a>
-                                    <%--<a href="#" class="dropdown-item">Control Acceso</a>--%>
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown hover-dropdown">
-                                <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-charts" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="menu-icon"><i class="ti ti-home"></i></span>
-                                    <span class="menu-text">Propiedades</span>
-                                    <div class="menu-arrow"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-charts">
-                                    <a href="PropiedadesPage.aspx" class="dropdown-item">Registros</a>
-                                    <a href="ListapropiedadesPage.aspx" class="dropdown-item">Lista propiedades</a>
-                                    <a href="ConsultasPage.aspx" class="dropdown-item">Consultas</a>
-                                </div>
-                            </li>
-
-                            <li class="nav-item dropdown hover-dropdown">
-                                <a class="nav-link dropdown-toggle drop-arrow-none" href="#" id="topnav-layouts" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="menu-icon"><i class="ti ti-layout"></i></span>
-                                    <span class="menu-text">Georreferencia</span>
-                                    <div class="menu-arrow"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-layouts">
-                                    <a href="UbicacionPage.aspx" class="dropdown-item">Iniciar Geo</a>
-                                    <a href="ModeloLmPage.aspx" class="dropdown-item">Asistente</a>
-                                    <%--<a href="layouts-horizontal.html" class="dropdown-item">Horizontal</a>--%>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </nav>

@@ -435,9 +435,11 @@
     <Content Include="assets\images\flags\zm.svg" />
     <Content Include="assets\images\flags\zw.svg" />
     <Content Include="assets\images\logo-dark.png" />
+    <Content Include="assets\images\logo-darkdos.png" />
     <Content Include="assets\images\logo-sm.png" />
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\images\logoD.png" />
+    <Content Include="assets\images\logodosn.png" />
     <Content Include="assets\images\logoEmi.png" />
     <Content Include="assets\images\logoL.png" />
     <Content Include="assets\images\panda.svg" />
@@ -2878,19 +2880,24 @@
     <Content Include="assets\vendor\toastr\toastr.min.js" />
     <Content Include="assets\vendor\vanilla-wizard\js\wizard.min.js" />
     <Content Include="assets\vendor\wnumb\wNumb.min.js" />
+    <Content Include="ChatModelIA.aspx" />
     <Content Include="ConsultasPage.aspx" />
+    <Content Include="Imagenes\botMd.jpg" />
     <Content Include="Imagenes\fotop4.jpg" />
     <Content Include="Imagenes\iconlo.png" />
+    <Content Include="Imagenes\logomaster.png" />
     <Content Include="Imagenes\logoMinisterio.png" />
     <Content Include="Imagenes\selectimg.png" />
     <Content Include="Imagenes\sinimagen.png" />
     <Content Include="Inicio.aspx" />
+    <Content Include="js\ChatModelIA.js" />
     <Content Include="js\ConsultasPage.js" />
     <Content Include="js\InicioPage.js" />
     <Content Include="js\ListaPropiedadesPage.js" />
     <Content Include="js\Login.js" />
     <Content Include="js\Masterpa.js" />
     <Content Include="js\ModeloMlPage.js" />
+    <Content Include="js\PageRegistroPropiedad.js" />
     <Content Include="js\PropiedadesPage.js" />
     <Content Include="js\UbicacionGeoPage.js" />
     <Content Include="js\UsuariosPage.js" />
@@ -2906,12 +2913,21 @@
     <Content Include="MasterAdmin\UbicacionesPage.aspx" />
     <Content Include="MasterAdmin\UsuariosReg.aspx" />
     <Content Include="ModeloLmPage.aspx" />
+    <Content Include="PageRegistroPropiedad.aspx" />
     <Content Include="PropiedadesPage.aspx" />
     <Content Include="UbicacionPage.aspx" />
     <Content Include="UsuariosPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatModelIA.aspx.cs">
+      <DependentUpon>ChatModelIA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatModelIA.aspx.designer.cs">
+      <DependentUpon>ChatModelIA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatProcesador.cs" />
     <Compile Include="ConsultasPage.aspx.cs">
       <DependentUpon>ConsultasPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2996,6 +3012,13 @@
     </Compile>
     <Compile Include="ModeloLmPage.aspx.designer.cs">
       <DependentUpon>ModeloLmPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageRegistroPropiedad.aspx.cs">
+      <DependentUpon>PageRegistroPropiedad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageRegistroPropiedad.aspx.designer.cs">
+      <DependentUpon>PageRegistroPropiedad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropiedadesPage.aspx.cs">

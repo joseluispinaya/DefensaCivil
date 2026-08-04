@@ -53,7 +53,7 @@
             <div class="card-body p-4">
                 <div class="row align-items-center">
                     <div class="col-sm-auto text-center text-sm-start mb-3 mb-sm-0 pe-sm-4 border-sm-end border-secondary border-opacity-25">
-                        <img src="https://www.mindef.gob.bo/wp-content/uploads/2025/12/logo-MinDef-25-Oficial-Vert-01.png" alt="Ministerio de Defensa" class="logo-institucional">
+                        <img src="../Imagenes/logomaster.png" alt="Ministerio de Defensa" class="logo-institucional">
                     </div>
                     <div class="col-sm text-center text-sm-start ps-sm-4">
                         <span class="badge bg-danger text-white rounded-pill px-3 py-1 mb-2 fw-semibold tracking-wide shadow-sm">

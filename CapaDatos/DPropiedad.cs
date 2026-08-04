@@ -531,5 +531,62 @@ namespace CapaDatos
             }
         }
 
+        public Respuesta<List<PropiedadIADTO>> ListaPropiedadesModelo(int IdRegional)
+        {
+            try
+            {
+                List<PropiedadIADTO> rptLista = new List<PropiedadIADTO>();
+
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerPropPorRegionalModelo", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@IdRegional", IdRegional);
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new PropiedadIADTO
+                                {
+                                    TipoPropiedad = dr["TipoPropiedad"].ToString(),
+                                    Zona = dr["Zona"].ToString(),
+
+                                    AreaM2 = Convert.ToDecimal(dr["AreaM2"]),
+                                    Largo = Convert.ToDecimal(dr["Largo"]),
+                                    Ancho = Convert.ToDecimal(dr["Ancho"]),
+                                    Topografia = dr["Topografia"].ToString(),
+                                    TipoSuelo = dr["TipoSuelo"].ToString(),
+                                    Direccion = dr["Direccion"].ToString(),
+                                    NotasAdicionales = dr["NotasAdicionales"].ToString(),
+                                    EstadoServicios = dr["EstadoServicios"].ToString(),
+                                    RiesgoInundacion = dr["RiesgoInundacion"].ToString(),
+                                    RiesgoDeslizamiento = dr["RiesgoDeslizamiento"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<PropiedadIADTO>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Lista obtenidos correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<PropiedadIADTO>>()
+                {
+                    Estado = false,
+                    Mensaje = "Ocurrió un error: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
+
     }
 }

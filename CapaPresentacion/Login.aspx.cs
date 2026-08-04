@@ -78,7 +78,7 @@ namespace CapaPresentacion
                 HttpContext.Current.Session["TipoUsuario"] = "UsuarioRegular";
 
                 // Registramos el acceso llamando a la CAPA DE NEGOCIO
-                NUsuarios.GetInstance().RegistrarAcceso(objUsua.IdUsuario);
+                //NUsuarios.GetInstance().RegistrarAcceso(objUsua.IdUsuario);
 
                 // devolvemos el objeto (limpiando el hash por seguridad antes de enviarlo al front)
                 objUsua.Clave = "";

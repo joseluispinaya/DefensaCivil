@@ -64,5 +64,10 @@ namespace CapaNegocio
         {
             return DPropiedad.GetInstance().InfoPropiedad(IdPropiedad);
         }
+
+        public Respuesta<List<PropiedadIADTO>> ListaPropiedadesModelo(int IdRegional)
+        {
+            return DPropiedad.GetInstance().ListaPropiedadesModelo(IdRegional);
+        }
     }
 }

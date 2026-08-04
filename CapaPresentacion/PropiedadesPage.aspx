@@ -181,32 +181,6 @@
                                                         </button>
                                                     </div>
                                                 </div>
-
-                                                <%--<div class="row">
-                                                    <div class="col-md-8 offset-md-2">
-                                                        <div class="row">
-                                                            <div class="col-md-5">
-                                                                <div class="input-group input-group-sm flex-nowrap">
-                                                                    <span class="input-group-text" id="grouplati">Latitud</span>
-                                                                    <input type="text" class="form-control" id="txtLatitud" aria-label="Latitud"
-                                                                        aria-describedby="grouplati" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                <div class="input-group input-group-sm flex-nowrap">
-                                                                    <span class="input-group-text" id="grouplongi">Longitud</span>
-                                                                    <input type="text" class="form-control" id="txtLongitud" aria-label="Longitud"
-                                                                        aria-describedby="grouplongi" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <button type="button" id="btnConsultarDes" class="btn btn-sm btn-success">
-                                                                    <i class="ti ti-home-search fs-16 align-middle me-1"></i>Generar
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>--%>
                                             </div>
                                             
                                             
@@ -228,7 +202,6 @@
                                                 <div class="mb-2">
                                                     <div class="d-flex justify-content-center gap-2">
                                                         <button type="button" id="btnGuardar" class="btn btn-success gap-1"><i class="ti ti-device-floppy fs-16"></i>Registrar</button>
-                                                        <%--<button type="button" id="btnImprimirr" class="btn btn-primary gap-1"><i class="ti ti-printer fs-16"></i>Imprimir</button>--%>
                                                     </div>
                                                 </div>
                                             </div>
