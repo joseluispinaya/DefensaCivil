@@ -6,9 +6,9 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Iniciar Sesión | SIPRO - Defensa Civil</title>
+    <title>Iniciar Sesión | SIPRO - Ministerio de Defensa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Sistema de Control de Propiedades del Viceministerio de Defensa Civil" name="description" />
+    <meta content="Sistema de Control de Propiedades del Ministerio de Defensa" name="description" />
 
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!-- Theme Config Js -->
@@ -38,15 +38,15 @@
             <div class="row g-0">
                 
                 <div class="col-md-5 bg-custom-darker d-none d-md-flex flex-column justify-content-center align-items-center p-5 border-end border-secondary border-opacity-25">
-                    <img src="https://www.mindef.gob.bo/wp-content/uploads/2025/12/logo-MinDef-25-Oficial-Vert-01.png" alt="Logo Defensa Civil" style="max-width: 280px; filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.5));">
-                    <h4 class="fw-bold mt-4 mb-1 text-center text-uppercase">Defensa Civil</h4>
+                    <img src="Imagenes/logomaster.png" alt="Logo Defensa Civil" style="max-width: 280px; filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.5));">
+                    <h4 class="fw-bold mt-4 mb-1 text-center text-uppercase">Ministerio de Defensa</h4>
                     <p class="text-muted fs-14 text-center">Sistema de Control de Propiedades a Nivel Nacional</p>
                 </div>
 
                 <div class="col-md-7 p-4 p-md-5">
                     
                     <div class="d-md-none text-center mb-4">
-                        <img src="https://www.mindef.gob.bo/wp-content/uploads/2025/12/logo-MinDef-25-Oficial-Vert-01.png" alt="Logo" style="max-width: 100px;">
+                        <img src="Imagenes/logomaster.png" alt="Logo" style="max-width: 100px;">
                     </div>
 
                     <h4 class="fw-semibold mb-2">Bienvenido de nuevo</h4>
